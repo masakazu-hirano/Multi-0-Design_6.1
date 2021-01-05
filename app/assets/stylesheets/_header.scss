@@ -2,6 +2,7 @@
   width: 100vw;
   max-width: 1024px;
   height: 56px;
+  box-shadow: 0 1px 3px 0px #eeeeee;
   margin: 0 auto;
   position: relative;
 
@@ -9,6 +10,7 @@
     background-color: #eeeeee;
     border-radius: 8px;
     padding: 0 0 0 8px;
+    margin-left: 8px;
     position: absolute;
       top: 50%;
       transform: translateY(-50%);
@@ -41,6 +43,7 @@
   }
 
   nav {
+    margin-right: 8px;
     display: flex;
       flex-direction: row;
     position: absolute;
