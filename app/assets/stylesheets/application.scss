@@ -36,7 +36,7 @@ body {
       font-size: 0.7rem;
       text-align: center;
       line-height: 1.5em;
-      padding: 8px 8px 7px;
+      padding: 8px 8px 8px;
       margin-right: 64px;
       display: block;
 
@@ -47,6 +47,7 @@ body {
 
       &:hover {
         border-bottom: solid 1px #333333;
+        padding: 8px 8px 7px;
       }
     }
   }
