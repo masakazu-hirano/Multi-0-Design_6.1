@@ -11,6 +11,24 @@
   </head>
 
   <body>
+    <header class='Header'>
+      <%= form_with url: '#', class: 'Header__Search', local: true do |form| %>
+        <i class="fas fa-search Header__Search--Icon"></i>
+        <%= form.search_field :search, class: 'Header__Search__Form', placeholder: '未実装' %>
+      <% end %>
+
+      <h1><%= I18n.t('title') %></h1>
+
+      <nav>
+        <%= link_to new_user_session_path do %>
+          <i class="fas fa-sign-in-alt"></i> ログイン
+        <% end %>
+        <%= link_to new_user_registration_path do %>
+          <i class="fas fa-user-plus"></i> 新規登録
+        <% end %>
+      </nav>
+    </header>
+
     <%= yield %>
   </body>
 </html>
