@@ -1,0 +1,19 @@
+@import 'reset';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Noto+Serif+JP&family=Parisienne&display=swap');
+  /* Google Fonts から "Noto Sans JP"，"Noto Serif JP"，"Parisienne" をインポートする。 */
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 16px;
+  color: rgba(#333333, 1.0);
+  margin: 0 auto;
+
+  a {
+    color: rgba(#333333, 1.0);
+    text-decoration: none;
+  }
+}
+
+@import 'header';

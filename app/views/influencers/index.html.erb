@@ -1,0 +1,17 @@
+<header class='Header'>
+  <%= form_with url: '#', class: 'Header__Search', local: true do |form| %>
+    <i class="fas fa-search Header__Search--Icon"></i>
+    <%= form.search_field :search, class: 'Header__Search__Form', placeholder: '未実装' %>
+  <% end %>
+
+  <h1>Multi-0-Design</h1>
+
+  <nav>
+    <%= link_to '#' do %>
+      <i class="fas fa-sign-in-alt"></i> ログイン
+    <% end %>
+    <%= link_to '#' do %>
+      <i class="fas fa-user-plus"></i> 新規登録
+    <% end %>
+  </nav>
+</header>
