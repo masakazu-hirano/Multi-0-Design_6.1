@@ -5,6 +5,8 @@
   /* Google Fonts から "Noto Sans JP"，"Noto Serif JP"，"Parisienne" をインポートする。 */
 
 body {
+  width: 100vw;
+  max-width: 1024px;
   font-family: 'Noto Sans JP', sans-serif;
   font-size: 16px;
   color: rgba(#333333, 1.0);
@@ -14,40 +16,88 @@ body {
     color: rgba(#333333, 1.0);
     text-decoration: none;
   }
-}
 
-@import 'header';
+  @import 'header';
 
-.Global_Navi {
-  height: 48px;
-  position: relative;
+  .Global_Navi {
+    height: 48px;
+    position: relative;
 
-  &__Menu {
-    display: flex;
-      flex-direction: row;
-    position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translateY(-50%) translateX(-50%);
-      -webkit-transform: translateY(-50%) translateX(-50%);
+    &__Menu {
+      display: flex;
+        flex-direction: row;
+      position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+        -webkit-transform: translateY(-50%) translateX(-50%);
 
-    &--Link {
-      font-family: 'Noto Serif JP', serif;
-      font-size: 0.7rem;
-      text-align: center;
-      line-height: 1.5em;
-      padding: 8px 8px 8px;
-      margin-right: 64px;
-      display: block;
+      &--Link {
+        font-family: 'Noto Serif JP', serif;
+        font-size: 0.7rem;
+        text-align: center;
+        line-height: 1.5em;
+        padding: 8px 8px 8px;
+        margin-right: 64px;
+        display: block;
 
-      &::first-line {
-        font-family: 'Noto Sans JP', sans-serif;
-        font-size: 0.9rem;
+        &::first-line {
+          font-family: 'Noto Sans JP', sans-serif;
+          font-size: 0.9rem;
+        }
+
+        &:hover {
+          border-bottom: solid 1px #333333;
+          padding: 8px 8px 7px;
+        }
       }
+    }
+  }
 
-      &:hover {
-        border-bottom: solid 1px #333333;
-        padding: 8px 8px 7px;
+  .Coordinates {
+    width: 100vw;
+    max-width: 1024px;
+    margin: 80px auto 0;
+
+    &__Flexbox {
+      width: 784px;
+      margin: 0 0 0 auto;
+      display: flex;
+        flex-direction: row;
+
+      &__User {
+        // background-color: lightpink;
+        width: 240px;
+        height: 376px;
+        margin-right: 32px;
+
+        &--Coordinate {
+          width: 240px;
+          height: 320px;
+        }
+
+        &__Profile {
+          width: 240 - 18px;
+          font-size: 0.7rem;
+          padding: 4px 0 0 16px;
+          margin-top: -5px;
+          border-left: solid 1px rgba(#333333, .3);
+          border-right: solid 1px rgba(#333333, .3);
+          border-bottom: solid 1px rgba(#333333, .3);
+          position: relative;
+
+          &--Name {
+            position: absolute;
+              top: 4px;
+              left: 56px;
+          }
+
+          &--Image {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+          }
+        }
       }
     }
   }
