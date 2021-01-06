@@ -21,34 +21,23 @@ body {
 
   .Global_Navi {
     height: 48px;
-    position: relative;
 
     &__Menu {
+      width: 60%;
+      margin: 0 auto;
       display: flex;
-        flex-direction: row;
-      position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translateY(-50%) translateX(-50%);
-        -webkit-transform: translateY(-50%) translateX(-50%);
+        justify-content: space-around;
 
       &--Link {
         font-family: 'Noto Serif JP', serif;
         font-size: 0.7rem;
         text-align: center;
-        line-height: 1.5em;
-        padding: 8px 8px 8px;
-        margin-right: 64px;
-        display: block;
+        padding: 5px 32px 6px;
 
-        &::first-line {
-          font-family: 'Noto Sans JP', sans-serif;
-          font-size: 0.9rem;
-        }
-
+        &::first-line { font-size: 0.9rem; }
         &:hover {
           border-bottom: solid 1px #333333;
-          padding: 8px 8px 7px;
+          padding: 5px 32px;
         }
       }
     }
