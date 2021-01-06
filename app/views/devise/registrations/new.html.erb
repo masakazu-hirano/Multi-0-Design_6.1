@@ -29,6 +29,11 @@
         <span class='Regist__Input--Text'>※ もう一度、パスワードを入力してください。</span>
       </div>
 
+      <div class="field Regist__Agreement">
+        <%= f.check_box :agreement %>
+        <%= f.label :agreement, '利用規約，プライバシーポリシーに同意する。', class: 'Regist__Agreement--Text' %>
+      </div>
+
       <div class="actions Regist__Submit">
         <%= f.submit '新規登録', class: 'Regist__Submit--Button' %><br>
       </div>

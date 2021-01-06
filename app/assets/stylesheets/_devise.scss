@@ -160,6 +160,16 @@
       }
     }
 
+    &__Agreement {
+      font-size: 0.6rem;
+      margin: 0 0 0 170px;
+
+      &--Text {
+        position: relative;
+          top: -2px;
+      }
+    }
+
     &__Submit {
       &--Button {
         width: 16.8em;
