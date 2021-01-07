@@ -1,2 +1,11 @@
 ja:
   title: 'Multi-0-Design'
+
+  activerecord:
+    errors:
+      messages:
+        blank: 'を入力してください。'
+        taken: 'は既に登録されています。'
+        accepted: 'に同意してください。'
+        confirmation: と%{attribute}の入力が一致しません。
+        too_short: は %{count}文字以上で入力してください。
