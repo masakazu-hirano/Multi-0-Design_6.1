@@ -1,10 +1,13 @@
 .Header {
-  width: 100vw;
-  max-width: 1024px;
-  height: 56px;
   box-shadow: 0 1px 3px 0px #eeeeee;
-  margin: 0 auto;
-  position: relative;
+
+  &__Width {
+    width: 100vw;
+    max-width: 1024px;
+    height: 56px;
+    margin: 0 auto;
+    position: relative;
+  }
 
   &__Search {
     background-color: #eeeeee;

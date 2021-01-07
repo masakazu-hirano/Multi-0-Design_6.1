@@ -6,11 +6,9 @@
 
 body {
   width: 100vw;
-  max-width: 1024px;
   font-family: 'Noto Sans JP', sans-serif;
   font-size: 16px;
   color: rgba(#333333, 1.0);
-  margin: 0 auto;
 
   a {
     color: rgba(#333333, 1.0);
@@ -20,7 +18,9 @@ body {
   @import 'header';
 
   .Global_Navi {
+    max-width: 1024px;
     height: 48px;
+    margin: 0 auto;
 
     &__Menu {
       width: 60%;
@@ -55,7 +55,6 @@ body {
         flex-direction: row;
 
       &__User {
-        // background-color: lightpink;
         width: 240px;
         height: 376px;
         margin-right: 32px;
@@ -63,6 +62,7 @@ body {
         &--Coordinate {
           width: 240px;
           height: 320px;
+          object-fit: contain;
         }
 
         &__Profile {

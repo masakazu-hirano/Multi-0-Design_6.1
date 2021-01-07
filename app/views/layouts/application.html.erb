@@ -12,21 +12,33 @@
 
   <body>
     <header class='Header'>
-      <%= form_with url: '#', class: 'Header__Search', local: true do |form| %>
-        <i class="fas fa-search Header__Search--Icon"></i>
-        <%= form.search_field :search, class: 'Header__Search__Form', placeholder: '未実装' %>
-      <% end %>
-
-      <h1><%= I18n.t('title') %></h1>
-
-      <nav>
-        <%= link_to new_user_session_path do %>
-          <i class="fas fa-sign-in-alt"></i> ログイン
+      <div class='Header__Width'>
+        <%= form_with url: youtube_videos_path, method: :get, class: 'Header__Search', local: true do |form| %>
+          <i class="fas fa-search Header__Search--Icon"></i>
+          <%= form.search_field :search, class: 'Header__Search__Form', placeholder: '未実装' %>
         <% end %>
-        <%= link_to new_user_registration_path do %>
-          <i class="fas fa-user-plus"></i> 新規登録
-        <% end %>
-      </nav>
+
+        <h1>
+          <%= link_to root_path do %>
+            <%= I18n.t('title') %>
+          <% end %>
+        </h1>
+
+        <nav>
+          <% if user_signed_in? %>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt"></i> ログアウト
+            <% end %>
+          <% else %>
+            <%= link_to new_user_session_path do %>
+              <i class="fas fa-sign-in-alt"></i> ログイン
+            <% end %>
+            <%= link_to new_user_registration_path do %>
+              <i class="fas fa-user-plus"></i> 新規登録
+            <% end %>
+          <% end %>
+        </nav>
+      </div>
     </header>
 
     <%= yield %>
