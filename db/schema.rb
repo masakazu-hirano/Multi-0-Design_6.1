@@ -12,11 +12,11 @@
 
 ActiveRecord::Schema.define(version: 2021_01_05_142237) do
 
-  create_table "users", id: { type: :integer, limit: 2 }, charset: "utf8", force: :cascade do |t|
-    t.string "name", limit: 255, null: false, collation: "utf8mb4_general_ci"
-    t.string "email", limit: 255, null: false
-    t.string "encrypted_password", limit: 255, null: false
-    t.string "reset_password_token", collation: "utf8mb4_general_ci"
+  create_table "users", id: { type: :integer, limit: 2 }, charset: "utf8mb4", force: :cascade do |t|
+    t.string "name", limit: 255, null: false
+    t.string "email", limit: 255, null: false, collation: "utf8_general_ci"
+    t.string "encrypted_password", limit: 255, null: false, collation: "utf8_general_ci"
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
