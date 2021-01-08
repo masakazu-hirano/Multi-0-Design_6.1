@@ -59,7 +59,7 @@ body {
         height: 300px;
         margin-top: 80px;
 
-        &__Title {
+        &__Title-Menu {
           font-family: 'Noto Serif JP', serif;
           margin-bottom: 16px;
           position: relative;
@@ -81,6 +81,42 @@ body {
               content: '';
               background-color: #333333;
               width: 30px;
+              height: 1px;
+              margin-left: 8px;
+            }
+          }
+
+          &--Down_Text {
+            font-size: 0.7rem;
+            text-align: center;
+            margin: -0.4em 0 0 2.0em;
+          }
+
+          .fas { margin-right: 4px; }
+        }
+
+        &__Title-Search {
+          font-family: 'Noto Serif JP', serif;
+          margin: 48px 0 16px;
+          position: relative;
+
+          h2 {
+            display: flex;
+              justify-content: center;
+              align-items: center;
+
+            &::before {
+              content: '';
+              background-color: #333333;
+              width: 45px;
+              height: 1px;
+              margin-right: 8px;
+            }
+
+            &::after {
+              content: '';
+              background-color: #333333;
+              width: 45px;
               height: 1px;
               margin-left: 8px;
             }
@@ -123,6 +159,40 @@ body {
           }
         }
 
+        &__YouTube-Search {
+          .fab { color: #f1224d; }
+          width: 158px;
+          font-size: 0.8rem;
+          margin-left: 15px;
+
+          &__Form {
+            text-align: center;
+            margin-top: 8px;
+            position: relative;
+
+            &__Text {
+              background-color: #eeeeee;
+              width: 95%;
+              height: 2.0em;
+              border: none;
+              border-radius: 8px;
+              padding: 0 4px 0 24px;
+            }
+
+            &--Icon {
+              color: #333333;
+              position: absolute;
+                top: 8px;
+                left: 8px;
+            }
+
+            &__Count {
+              font-size: 0.7rem;
+              text-align: right;
+              margin-top: 4px;
+            }
+          }
+        }
       }
 
       .Right_Column {
