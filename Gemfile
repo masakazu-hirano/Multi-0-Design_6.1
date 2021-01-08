@@ -58,5 +58,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'pry', '~> 0.13.1'
-gem 'font-awesome-sass'
+gem 'google-api-client', '~> 0.52.0'
 gem 'devise', '~> 4.7', '>= 4.7.3'
+gem 'font-awesome-sass'
