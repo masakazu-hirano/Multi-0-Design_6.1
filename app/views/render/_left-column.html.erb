@@ -6,7 +6,9 @@
 <div class='Left_Column__Side-Menu'>
   <% if user_signed_in? %>
     <p class='Welcome'>
-      <% if @welcome_time >= 17 %>
+      <% if current_user.name == '採用ご担当者' %>
+        ログインしていただき、ありがとうございます。
+      <% elsif @welcome_time >= 17 %>
         こんばんは。
       <% elsif @welcome_time >= 11 %>
         こんにちは。
@@ -16,7 +18,11 @@
         お疲れさまです。
       <% end %><br />
 
-      <span class='Welcome--Name'><%= current_user.name %></span> さん
+      <% if current_user.name == '採用ご担当者' %>
+        <span class='Welcome--Name'><%= current_user.name %></span> 様
+      <% else %>
+        <span class='Welcome--Name'><%= current_user.name %></span> さん
+      <% end %>
     </p>
   <% end %>
 
