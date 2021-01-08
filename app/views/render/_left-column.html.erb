@@ -18,17 +18,28 @@
 
       <span class='Welcome--Name'><%= current_user.name %></span> さん
     </p>
+  <% end %>
 
+  <% unless current_page?(root_path) %>
+    <%= link_to root_path, class: 'Left_Column__Side-Menu--Link' do %>
+      <i class="fas fa-home"></i> トップページ
+    <% end %>
+  <% end %>
+
+  <% if user_signed_in? %>
     <%= link_to destroy_user_session_path, method: :delete, class: 'Left_Column__Side-Menu--Link' do %>
       <i class="fas fa-sign-out-alt"></i> ログアウト
     <% end %>
   <% else %>
-    <%= link_to new_user_session_path, class: 'Left_Column__Side-Menu--Link' do %>
-      <i class="fas fa-sign-in-alt"></i> ログイン
+    <% unless current_page?(new_user_session_path) %>
+      <%= link_to new_user_session_path, class: 'Left_Column__Side-Menu--Link' do %>
+        <i class="fas fa-sign-in-alt"></i> ログイン
+      <% end %>
     <% end %>
-
-    <%= link_to new_user_registration_path, class: 'Left_Column__Side-Menu--Link' do %>
-      <i class="fas fa-user-plus"></i> 新規登録
+    <% unless current_page?(new_user_registration_path) %>
+      <%= link_to new_user_registration_path, class: 'Left_Column__Side-Menu--Link' do %>
+        <i class="fas fa-user-plus"></i> 新規登録
+      <% end %>
     <% end %>
   <% end %>
 </div>
