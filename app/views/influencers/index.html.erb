@@ -18,40 +18,7 @@
 <section class='Contents'>
   <section class='Contents__Body'>
     <section class='Left_Column'>
-      <div class='Left_Column__Title'>
-        <h2><i class="fas fa-bars"></i> メニュー</h2>
-        <p class='Left_Column__Title--Down_Text'>Menu</p>
-      </div>
-
-      <div class='Left_Column__Side-Menu'>
-        <% if user_signed_in? %>
-          <p class='Welcome'>
-            <% if @welcome_time >= 17 %>
-              こんばんは。
-            <% elsif @welcome_time >= 11 %>
-              こんにちは。
-            <% elsif @welcome_time >= 5 %>
-              おはようございます。
-            <% else %>
-              お疲れさまです。
-            <% end %><br />
-
-            <span class='Welcome--Name'><%= current_user.name %></span> さん
-          </p>
-
-          <%= link_to destroy_user_session_path, method: :delete, class: 'Left_Column__Side-Menu--Link' do %>
-            <i class="fas fa-sign-out-alt"></i> ログアウト
-          <% end %>
-        <% else %>
-          <%= link_to new_user_session_path, class: 'Left_Column__Side-Menu--Link' do %>
-            <i class="fas fa-sign-in-alt"></i> ログイン
-          <% end %>
-
-          <%= link_to new_user_registration_path, class: 'Left_Column__Side-Menu--Link' do %>
-            <i class="fas fa-user-plus"></i> 新規登録
-          <% end %>
-        <% end %>
-      </div>
+      <%= render partial: 'render/left-column' %>
     </section>
 
     <section class='Right_Column'>

@@ -20,7 +20,7 @@ body {
   .Global_Navi {
     max-width: 1024px;
     height: 48px;
-    margin: 0 auto 80px;
+    margin: 0 auto;
 
     &__Menu {
       width: 60%;
@@ -44,11 +44,9 @@ body {
   }
 
   .Contents {
-    // background-color: lightgray;
     height: 300px;
 
     &__Body {
-      // background-color: lightyellow;
       width: 100vw;
       max-width: 1024px;
       height: 300px;
@@ -59,6 +57,7 @@ body {
       .Left_Column {
         width: 240 - 52px;
         height: 300px;
+        margin-top: 80px;
 
         &__Title {
           font-family: 'Noto Serif JP', serif;
@@ -127,8 +126,9 @@ body {
       }
 
       .Right_Column {
+        margin-top: 80px;
+
         .Coordinates {
-          // background-color: lightskyblue;
           width: 784px;
           margin: 0 0 0 auto;
 
@@ -173,8 +173,9 @@ body {
           }
         }
       }
+
+      @import 'devise';
+
     }
   }
-
-  @import 'devise';
 }
