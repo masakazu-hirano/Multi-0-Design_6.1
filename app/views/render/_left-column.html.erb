@@ -58,8 +58,8 @@
 <div class='Left_Column__YouTube-Search'>
   <i class='fab fa-youtube'></i> YouTube 動画検索
 
-  <%= form_with url: youtube_videos_path, method: :get, class: 'Left_Column__YouTube-Search__Form', local: true do |form| %>
-    <%= form.search_field :search, placeholder: '商品名で検索', class: 'Left_Column__YouTube-Search__Form__Text' %>
+  <%= form_with url: new_youtube_video_path, method: :get, class: 'Left_Column__YouTube-Search__Form', local: true do |form| %>
+    <%= form.search_field :search, placeholder: 'キーワードを入力', class: 'Left_Column__YouTube-Search__Form__Text' %>
     <i class="fas fa-search Left_Column__YouTube-Search__Form--Icon"></i>
 
     <div class='Left_Column__YouTube-Search__Form__Count'>
