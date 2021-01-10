@@ -1,0 +1,307 @@
+@import 'reset';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Noto+Serif+JP&family=Parisienne&display=swap');
+  /* Google Fonts から "Noto Sans JP"，"Noto Serif JP"，"Parisienne" をインポートする。 */
+
+body {
+  width: 100vw;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 16px;
+  color: rgba(#333333, 1.0);
+
+  a {
+    color: rgba(#333333, 1.0);
+    text-decoration: none;
+  }
+
+  @import 'header';
+
+  .Global_Navi {
+    max-width: 1024px;
+    height: 48px;
+    margin: 0 auto;
+
+    &__Menu {
+      width: 60%;
+      margin: 0 auto;
+      display: flex;
+        justify-content: space-around;
+
+      &--Link {
+        font-family: 'Noto Serif JP', serif;
+        font-size: 0.7rem;
+        text-align: center;
+        padding: 5px 32px 6px;
+
+        &::first-line { font-size: 0.9rem; }
+        &:hover {
+          border-bottom: solid 1px #333333;
+          padding: 5px 32px;
+        }
+      }
+    }
+  }
+
+  .Contents {
+    height: 300px;
+
+    &__Body {
+      width: 100vw;
+      max-width: 1024px;
+      height: 300px;
+      margin: 0 auto;
+      display: flex;
+        justify-content: space-between;
+
+      .Left_Column {
+        width: 240 - 52px;
+        height: 300px;
+        margin-top: 80px;
+
+        &__Title-Menu {
+          font-family: 'Noto Serif JP', serif;
+          margin-bottom: 16px;
+          position: relative;
+
+          h2 {
+            display: flex;
+              justify-content: center;
+              align-items: center;
+
+            &::before {
+              content: '';
+              background-color: #333333;
+              width: 30px;
+              height: 1px;
+              margin-right: 8px;
+            }
+
+            &::after {
+              content: '';
+              background-color: #333333;
+              width: 30px;
+              height: 1px;
+              margin-left: 8px;
+            }
+          }
+
+          &--Down_Text {
+            font-size: 0.7rem;
+            text-align: center;
+            margin: -0.4em 0 0 2.0em;
+          }
+
+          .fas { margin-right: 4px; }
+        }
+
+        &__Title-Search {
+          font-family: 'Noto Serif JP', serif;
+          margin: 48px 0 16px;
+          position: relative;
+
+          h2 {
+            display: flex;
+              justify-content: center;
+              align-items: center;
+
+            &::before {
+              content: '';
+              background-color: #333333;
+              width: 45px;
+              height: 1px;
+              margin-right: 8px;
+            }
+
+            &::after {
+              content: '';
+              background-color: #333333;
+              width: 45px;
+              height: 1px;
+              margin-left: 8px;
+            }
+          }
+
+          &--Down_Text {
+            font-size: 0.7rem;
+            text-align: center;
+            margin: -0.4em 0 0 2.0em;
+          }
+
+          .fas { margin-right: 4px; }
+        }
+
+        &__Side-Menu {
+          .Welcome {
+            font-size: 0.7rem;
+            margin: 8px 0 0 16px;
+
+            &--Name {
+              font-size: 0.9rem;
+              margin: 0 0 0 0.7em;
+            }
+          }
+
+          &--Link {
+            width: 153px;
+            font-size: 0.8rem;
+            text-align: center;
+            border: solid 1px #333333;
+            border-radius: 4px;
+            padding: 0 2px;
+            margin: 8px 0 0 14px;
+            display: inline-block;
+
+            &:hover {
+              background-color: #333333;
+              color: #ffffff;
+            }
+          }
+        }
+
+        &__YouTube-Search {
+          .fab { color: #f1224d; }
+          width: 158px;
+          font-size: 0.8rem;
+          margin-left: 15px;
+
+          &__Form {
+            text-align: center;
+            margin-top: 8px;
+            position: relative;
+
+            &__Text {
+              background-color: #eeeeee;
+              width: 95%;
+              height: 2.0em;
+              border: none;
+              border-radius: 8px;
+              padding: 0 4px 0 24px;
+            }
+
+            &--Icon {
+              color: #333333;
+              position: absolute;
+                top: 8px;
+                left: 8px;
+            }
+
+            &__Count {
+              font-size: 0.7rem;
+              text-align: right;
+              margin-top: 4px;
+            }
+          }
+        }
+      }
+
+      .Right_Column {
+        margin-top: 80px;
+
+        .Coordinates {
+          width: 784px;
+          margin: 0 0 0 auto;
+
+          &__Flexbox {
+            display: flex;
+              flex-direction: row;
+
+            &__User {
+              width: 240px;
+              height: 376px;
+              margin-right: 32px;
+
+              &--Coordinate {
+                width: 240px;
+                height: 320px;
+                object-fit: contain;
+              }
+
+              &__Profile {
+                width: 240 - 18px;
+                font-size: 0.7rem;
+                padding: 4px 0 0 16px;
+                margin-top: -5px;
+                border-left: solid 1px rgba(#333333, .3);
+                border-right: solid 1px rgba(#333333, .3);
+                border-bottom: solid 1px rgba(#333333, .3);
+                position: relative;
+
+                &--Name {
+                  position: absolute;
+                    top: 4px;
+                    left: 56px;
+                }
+
+                &--Image {
+                  width: 32px;
+                  height: 32px;
+                  border-radius: 50%;
+                }
+              }
+            }
+          }
+        }
+
+        &__Video-Lists {
+          width: 784px;
+          margin-left: auto;
+
+          &__Video {
+            margin-bottom: 80px;
+
+            h2 {
+              background-color: rgba(#333333, 0.1);
+              font-size: 1.1rem;
+              border-radius: 8px;
+              box-shadow: 2px 2px 4px rgba(#333333, 0.2);
+              padding: 4px;
+              margin-bottom: 16px;
+            }
+
+            &__Release {
+              background: rgba(#ff6600, 0.4);
+              font-size: 0.8rem;
+              padding: 1px 8px 1px 12px;
+              margin: 0 0 2px 32px;
+              display: inline-block;
+              position: relative;
+
+              &:before {
+                content: '';
+                border-style: solid;
+                border-color: transparent rgba(#ff6600, 0.4) transparent transparent;
+                border-width: 11px 16px 10px 0;
+                position: absolute;
+                  top: 0;
+                  left: -16px;
+              }
+
+              &:after {
+                content: '';
+                background: #ffffff;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                position: absolute;
+                  top: calc(50% - 4px);
+                  left: -4px;
+              }
+            }
+
+            iframe {
+              width: 560px;
+              height: 315px;
+              border: none;
+              margin: 16px 0 0 16px;
+              display: block;
+            }
+          }
+        }
+      }
+
+      @import 'devise';
+
+    }
+  }
+}

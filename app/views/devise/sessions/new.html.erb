@@ -1,0 +1,42 @@
+<section class='Contents'>
+  <section class='Contents__Body'>
+    <section class='Left_Column'>
+      <%= render partial: 'render/left-column' %>
+    </section>
+
+    <section class='Right_Column'>
+      <section id='Login_Page'>
+        <div class='Login'>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="field Login__Input">
+              <p class='Login__Input--Required'>必須</p>
+              <%= f.label :email, 'メールアドレス' %><br />
+              <%= f.email_field :email, autocomplete: 'email', class: 'Login__Input--E-Mail', required: :true %>
+            </div>
+
+            <div class="field Login__Input">
+              <p class='Login__Input--Required'>必須</p>
+              <%= f.label :password, 'パスワード' %><br />
+              <%= f.password_field :password, autocomplete: 'current-password', class: 'Login__Input--Password', required: :true %>
+            </div>
+
+            <%= link_to 'パスワードを忘れた方はこちら…', '#', class: 'Login--Password-Reset' %>
+            <%#= link_to 'パスワードを忘れた方はこちら…', new_user_password_path, class: 'Login--Password-Reset' %>
+
+            <% if devise_mapping.rememberable? %>
+              <div class="field Login__Password-Memory">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me, 'パスワードを記憶する。', class: 'Login__Password-Memory--Text' %>
+              </div>
+            <% end %>
+
+            <div class="actions Login__Submit">
+              <%= f.submit 'ログイン', class: 'Login__Submit--Button' %><br>
+              <%= link_to '採用ご担当者様はこちら…', users_recruiter_sign_in_path, method: :post, class: 'Login__Submit--Recruit' %>
+            </div>
+          <% end %>
+        </div>
+      </section>
+    </section>
+  </section>
+</section>

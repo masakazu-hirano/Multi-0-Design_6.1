@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Multi0Design</title>
+    <title><%= I18n.t('title') %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,50 @@
   </head>
 
   <body>
+    <header class='Header'>
+      <div class='Header__Width'>
+        <%= form_with url: youtube_videos_path, method: :get, class: 'Header__Search', local: true do |form| %>
+          <i class="fas fa-search Header__Search--Icon"></i>
+          <%= form.search_field :search, class: 'Header__Search__Form', placeholder: '未実装' %>
+        <% end %>
+
+        <h1>
+          <%= link_to root_path do %>
+            <%= I18n.t('title') %>
+          <% end %>
+        </h1>
+
+        <nav>
+          <% if user_signed_in? %>
+            <% unless current_page?(root_path) %>
+              <%= link_to root_path do %>
+                <i class="fas fa-home"></i> トップページ
+              <% end %>
+            <% end %>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt"></i> ログアウト
+            <% end %>
+          <% else %>
+            <% unless current_page?(root_path) %>
+              <%= link_to root_path do %>
+                <i class="fas fa-home"></i> トップページ
+              <% end %>
+            <% end %>
+            <% unless current_page?(new_user_session_path) %>
+              <%= link_to new_user_session_path do %>
+                <i class="fas fa-sign-in-alt"></i> ログイン
+              <% end %>
+            <% end %>
+            <% unless current_page?(new_user_registration_path) || current_page?(youtube_videos_path) %>
+              <%= link_to new_user_registration_path do %>
+                <i class="fas fa-user-plus"></i> 新規登録
+              <% end %>
+            <% end %>
+          <% end %>
+        </nav>
+      </div>
+    </header>
+
     <%= yield %>
   </body>
 </html>
