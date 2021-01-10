@@ -242,6 +242,62 @@ body {
             }
           }
         }
+
+        &__Video-Lists {
+          width: 784px;
+          margin-left: auto;
+
+          &__Video {
+            margin-bottom: 80px;
+
+            h2 {
+              background-color: rgba(#333333, 0.1);
+              font-size: 1.1rem;
+              border-radius: 8px;
+              box-shadow: 2px 2px 4px rgba(#333333, 0.2);
+              padding: 4px;
+              margin-bottom: 16px;
+            }
+
+            &__Release {
+              background: rgba(#ff6600, 0.4);
+              font-size: 0.8rem;
+              padding: 1px 8px 1px 12px;
+              margin: 0 0 2px 32px;
+              display: inline-block;
+              position: relative;
+
+              &:before {
+                content: '';
+                border-style: solid;
+                border-color: transparent rgba(#ff6600, 0.4) transparent transparent;
+                border-width: 11px 16px 10px 0;
+                position: absolute;
+                  top: 0;
+                  left: -16px;
+              }
+
+              &:after {
+                content: '';
+                background: #ffffff;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                position: absolute;
+                  top: calc(50% - 4px);
+                  left: -4px;
+              }
+            }
+
+            iframe {
+              width: 560px;
+              height: 315px;
+              border: none;
+              margin: 16px 0 0 16px;
+              display: block;
+            }
+          }
+        }
       }
 
       @import 'devise';
