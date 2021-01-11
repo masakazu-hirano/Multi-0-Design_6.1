@@ -13,7 +13,7 @@ class YoutubeVideosController < ApplicationController
     elsif Rails.env.production?
       youtube.key = ENV['YouTube_API_Key']
     end
-
+  
     options = { q: params[:search] , order: 'relevance', max_results: session[:video_search_count] }
     video_lists = youtube.list_searches(:snippet, options).to_h
 
