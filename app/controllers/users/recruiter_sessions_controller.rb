@@ -1,6 +1,11 @@
 class Users::RecruiterSessionsController < Devise::SessionsController
   def recruiter_login
-    user = User.find_or_create_by!(email: Rails.application.credentials.Recruiter[:Mail_Address])
+    if Rails.env.development?
+      user = User.find_or_create_by!(email: Rails.application.credentials.Recruiter[:Mail_Address])
+    elsif Rails.env.production?
+      user = ENV['Recruiter_ID']
+    end
+
     sign_in user
     redirect_to root_path
   end
