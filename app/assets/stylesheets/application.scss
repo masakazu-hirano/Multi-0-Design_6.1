@@ -198,51 +198,6 @@ body {
       .Right_Column {
         margin-top: 80px;
 
-        .Coordinates {
-          width: 784px;
-          margin: 0 0 0 auto;
-
-          &__Flexbox {
-            display: flex;
-              flex-direction: row;
-
-            &__User {
-              width: 240px;
-              height: 376px;
-              margin-right: 32px;
-
-              &--Coordinate {
-                width: 240px;
-                height: 320px;
-                object-fit: contain;
-              }
-
-              &__Profile {
-                width: 240 - 18px;
-                font-size: 0.7rem;
-                padding: 4px 0 0 16px;
-                margin-top: -5px;
-                border-left: solid 1px rgba(#333333, .3);
-                border-right: solid 1px rgba(#333333, .3);
-                border-bottom: solid 1px rgba(#333333, .3);
-                position: relative;
-
-                &--Name {
-                  position: absolute;
-                    top: 4px;
-                    left: 56px;
-                }
-
-                &--Image {
-                  width: 32px;
-                  height: 32px;
-                  border-radius: 50%;
-                }
-              }
-            }
-          }
-        }
-
         &__Video-Lists {
           width: 784px;
           margin-left: auto;
