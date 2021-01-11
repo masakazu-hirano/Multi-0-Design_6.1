@@ -7,8 +7,13 @@ class YoutubeVideosController < ApplicationController
 
     require 'google/apis/youtube_v3'
     youtube = Google::Apis::YoutubeV3::YouTubeService.new
-    # youtube.key = Rails.application.credentials.YouTube[:Data_API_Key]
-    youtube.key = ENV['YouTube_API_Key']
+
+    if Rails.env.development?
+      youtube.key = Rails.application.credentials.YouTube[:Data_API_Key]
+    elsif Rails.env.production?
+      youtube.key = ENV['YouTube_API_Key']
+    end
+  
     options = { q: params[:search] , order: 'relevance', max_results: session[:video_search_count] }
     video_lists = youtube.list_searches(:snippet, options).to_h
 
