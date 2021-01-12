@@ -8,4 +8,6 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, length: { minimum: 8 }
   validates :agreement, acceptance: true
+
+  has_many :youtube_videos, through: :videos_users
 end
