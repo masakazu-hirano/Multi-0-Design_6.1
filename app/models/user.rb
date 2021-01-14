@@ -9,5 +9,5 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 8 }
   validates :agreement, acceptance: true
 
-  has_many :youtube_videos, through: :videos_users
+  has_many :youtube_videos, through: :like_videos
 end
