@@ -244,12 +244,43 @@ body {
               }
             }
 
-            iframe {
-              width: 560px;
-              height: 315px;
-              border: none;
+            &__Flexbox {
               margin: 16px 0 0 16px;
-              display: block;
+              display: flex;
+                flex-direction: row;
+
+              iframe {
+                width: 560px;
+                height: 315px;
+                border: none;
+                margin-right: 8px;
+                display: block;
+              }
+
+              &__Favorite {
+                height: 1.3em;
+                border: solid 1px #333333;
+                border-radius: 4px;
+                padding: 8px;
+                display: flex;
+                  flex-direction: row;
+
+                .fa-bookmark {
+                  font-size: 1.5rem;
+                  margin-right: 8px;
+                }
+
+                p { font-size: 0.7rem; }
+                &--Text-Big {
+                  font-size: 1.0rem;
+                  font-weight: bold;
+                }
+
+                &:hover {
+                  background-color: #333333;
+                  color: #ffffff;
+                }
+              }
             }
           }
         }

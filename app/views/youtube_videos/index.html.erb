@@ -23,39 +23,37 @@
 
     <section class='Right_Column'>
       <div class='Right_Column__Video-Lists'>
-        <% if controller.controller_name == 'youtube_videos' && controller.action_name == 'create' %>
-          <% video_lists.each do |video_list| %>
-            <div class='Right_Column__Video-Lists__Video'>
-              <h2> <%= video_list[:title] %> </h2>
+        <% session[:video_lists].each do |video_list| %>
+          <div class='Right_Column__Video-Lists__Video'>
+            <h2> <%= video_list['title'] %> </h2>
 
-              <p class='Right_Column__Video-Lists__Video__Release'>
-                動画配信日：<%= Date.parse(video_list[:release_date]).strftime('%Y年 %m月 %d日') %>
-              </p><br />
-              <p class='Right_Column__Video-Lists__Video__Release'>
-                チャンネル名：<%= video_list[:channel] %>
-              </p>
-              <iframe src='https://www.youtube.com/embed/<%= video_list[:video_id] %>?cc_load_policy=0?rel=0' allow='gyroscope; picture-in-picture' allowfullscreen></iframe>
-            </div>
-          <% end %>
+            <p class='Right_Column__Video-Lists__Video__Release'>
+              動画配信日：<%= Date.parse(video_list['release_date']).strftime('%Y年 %m月 %d日') %>
+            </p><br />
+            <p class='Right_Column__Video-Lists__Video__Release'>
+              チャンネル名：<%= video_list['channel'] %>
+            </p>
 
-        <% elsif controller.controller_name == 'youtube_videos' && controller.action_name == 'index' %>
-          <% session[:video_lists].each do |video_list| %>
-            <div class='Right_Column__Video-Lists__Video'>
-              <h2> <%= video_list['title'] %> </h2>
-
-              <p class='Right_Column__Video-Lists__Video__Release'>
-                動画配信日：<%= Date.parse(video_list['release_date']).strftime('%Y年 %m月 %d日') %>
-              </p><br />
-              <p class='Right_Column__Video-Lists__Video__Release'>
-                チャンネル名：<%= video_list['channel'] %>
-              </p>
+            <div class='Right_Column__Video-Lists__Video__Flexbox'>
               <iframe src='https://www.youtube.com/embed/<%= video_list['video_id'] %>?cc_load_policy=0?rel=0' allow='gyroscope; picture-in-picture' allowfullscreen></iframe>
+
+              <% if user_signed_in? %>
+                <% if @video_likes.where(youtube_video_id: @videos.where(video_id: video_list['video_id'])[0].id, user_id: current_user.id).exists? %>
+                  <%= link_to video_like_path(@video_likes.where(youtube_video_id: @videos.where(video_id: video_list['video_id'])[0].id, user_id: current_user.id)[0].id), method: :delete, class: 'Right_Column__Video-Lists__Video__Flexbox__Favorite' do %>
+                    <i class="fas fa-bookmark"></i>
+                    <p class=''>ブックマークを<span class='Right_Column__Video-Lists__Video__Flexbox__Favorite--Text-Big'>解除</span>する</p>
+                  <% end %>
+                <% else %>
+                  <%= link_to(video_likes_path(channel: video_list['channel'], video_id: video_list['video_id'], title: video_list['title'], thumbnail: video_list['thumbnail'], release_date: video_list['release_date'], user_id: current_user.id), method: :post, class: 'Right_Column__Video-Lists__Video__Flexbox__Favorite') do %>
+                    <i class="far fa-bookmark"></i>
+                    <p class=''>動画を<span class='Right_Column__Video-Lists__Video__Flexbox__Favorite--Text-Big'>ブックマーク</span>する</p>
+                  <% end %>
+                <% end %>
+              <% end %>
             </div>
-          <% end %>
+          </div>
         <% end %>
       </div>
     </section>
   </section>
 </section>
-
-<%#= image_tag session[:video_lists_1].to_h['thumbnail'] %>
