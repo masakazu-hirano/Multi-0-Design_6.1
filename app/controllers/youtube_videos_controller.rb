@@ -1,5 +1,7 @@
 class YoutubeVideosController < ApplicationController
   def index
+    @videos = YoutubeVideo.all
+    @video_likes = LikeVideo.all
   end
 
   def create
@@ -62,7 +64,8 @@ class YoutubeVideosController < ApplicationController
       redirect_to root_path
     end
 
+    session[:video_lists] = nil
     session[:video_lists] = video_lists
-    render action: :index, locals: { video_lists: video_lists }
+    redirect_to youtube_videos_path
   end
 end
