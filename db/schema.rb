@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_13_100000) do
+ActiveRecord::Schema.define(version: 2021_01_13_103150) do
+
+  create_table "like_videos", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "youtube_video_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_like_videos_on_user_id"
+    t.index ["youtube_video_id"], name: "index_like_videos_on_youtube_video_id"
+  end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -25,4 +34,17 @@ ActiveRecord::Schema.define(version: 2021_01_13_100000) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "youtube_videos", charset: "utf8mb4", force: :cascade do |t|
+    t.string "channel", null: false
+    t.string "video_id", null: false
+    t.string "title", null: false
+    t.binary "thumbnail", null: false
+    t.date "release_date", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["video_id"], name: "index_youtube_videos_on_video_id", unique: true
+  end
+
+  add_foreign_key "like_videos", "users"
+  add_foreign_key "like_videos", "youtube_videos"
 end
