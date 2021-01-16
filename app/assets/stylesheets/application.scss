@@ -198,6 +198,56 @@ body {
       .Right_Column {
         margin-top: 80px;
 
+        .Popular_Movies {
+          width: 784 - 16px;
+          padding: 8px 0 0 16px;
+          margin-left: auto;
+          display: flex;
+            flex-wrap: wrap;
+
+          .YouTube_Movie {
+            width: 240px;
+            margin: 0 16px 48px 0;
+            img { width: 480 * 0.5px; }
+
+            &--Title {
+              height: 3.0em;
+              font-size: 0.8rem;
+              overflow: hidden;
+              overflow-y: scroll;
+            }
+
+            &--Follower {
+              color: #ffffff;
+              font-size: 0.8rem;
+              text-align: right;
+              position: relative;
+                top: -28px;
+
+              &--Text-Big {
+                font-size: 1.0rem;
+                font-weight: bold;
+              }
+            }
+
+            &__Link {
+              width: 100%;
+              font-size: 0.8rem;
+              text-align: center;
+              border: solid 1px #333333;
+              border-radius: 8px;
+              margin-top: -24px;
+              display: block;
+
+              &:hover {
+                background-color: #007bff;
+                color: #ffffff;
+                border: solid 1px #007bff;
+              }
+            }
+          }
+        }
+
         &__Video-Lists {
           width: 784px;
           margin-left: auto;
