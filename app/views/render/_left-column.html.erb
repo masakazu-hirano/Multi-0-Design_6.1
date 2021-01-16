@@ -1,9 +1,9 @@
-<div class='Left_Column__Title-Menu'>
-  <h2><i class="fas fa-bars"></i> メニュー</h2>
-  <p class='Left_Column__Title-Menu--Down_Text'>Menu</p>
+<div class='Sub-Title_Menu'>
+  <h2><i class='fas fa-bars'></i> メニュー</h2>
+  <p class='Sub-Title_Menu--Down_Text'>Menu</p>
 </div>
 
-<div class='Left_Column__Side-Menu'>
+<div class='Side-Menu'>
   <% if user_signed_in? %>
     <p class='Welcome'>
       <% if current_user.name == '採用ご担当者' %>
@@ -27,42 +27,42 @@
   <% end %>
 
   <% unless current_page?(root_path) %>
-    <%= link_to root_path, class: 'Left_Column__Side-Menu--Link' do %>
+    <%= link_to root_path, class: 'Side-Menu--Link' do %>
       <i class="fas fa-home"></i> トップページ
     <% end %>
   <% end %>
 
   <% if user_signed_in? %>
-    <%= link_to destroy_user_session_path, method: :delete, class: 'Left_Column__Side-Menu--Link' do %>
+    <%= link_to destroy_user_session_path, method: :delete, class: 'Side-Menu--Link' do %>
       <i class="fas fa-sign-out-alt"></i> ログアウト
     <% end %>
   <% else %>
     <% unless current_page?(new_user_session_path) %>
-      <%= link_to new_user_session_path, class: 'Left_Column__Side-Menu--Link' do %>
+      <%= link_to new_user_session_path, class: 'Side-Menu--Link' do %>
         <i class="fas fa-sign-in-alt"></i> ログイン
       <% end %>
     <% end %>
     <% unless current_page?(new_user_registration_path) %>
-      <%= link_to new_user_registration_path, class: 'Left_Column__Side-Menu--Link' do %>
+      <%= link_to new_user_registration_path, class: 'Side-Menu--Link' do %>
         <i class="fas fa-user-plus"></i> 新規登録
       <% end %>
     <% end %>
   <% end %>
 </div>
 
-<div class='Left_Column__Title-Search'>
+<div class='Sub-Title_Search'>
   <h2><i class='fas fa-search'></i> 検索</h2>
-  <p class='Left_Column__Title-Search--Down_Text'>Search</p>
+  <p class='Sub-Title_Search--Down_Text'>Search</p>
 </div>
 
-<div class='Left_Column__YouTube-Search'>
+<div class='Side-YouTube_Search'>
   <i class='fab fa-youtube'></i> YouTube 動画検索
 
-  <%= form_with url: youtube_videos_path, class: 'Left_Column__YouTube-Search__Form', local: true do |form| %>
-    <%= form.search_field :search, placeholder: 'キーワードを入力', class: 'Left_Column__YouTube-Search__Form__Text' %>
-    <i class="fas fa-search Left_Column__YouTube-Search__Form--Icon"></i>
+  <%= form_with url: youtube_videos_path, class: 'Side-YouTube_Search__Form', local: true do |form| %>
+    <%= form.search_field :search, placeholder: '', class: 'Side-YouTube_Search__Form--Input-Text' %>
+    <i class='fas fa-search'></i>
 
-    <div class='Left_Column__YouTube-Search__Form__Count'>
+    <div class='Side-YouTube_Search__Form__Number'>
       <%= form.radio_button :count, 1, checked: 'checked' %> 1件，
       <%= form.radio_button :count, 3 %> 3件，
       <%= form.radio_button :count, 5 %> 5件

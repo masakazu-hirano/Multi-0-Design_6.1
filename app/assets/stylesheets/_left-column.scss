@@ -1,0 +1,115 @@
+@mixin Sub-Title {
+  font-family: 'Noto Serif JP', serif;
+  position: relative;
+
+  h2 {
+    .fas { margin-right: 4px; }
+    &::before { margin-right: 8px; }
+    &::after { margin-left: 8px; }
+    display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  &--Down_Text {
+    font-size: 0.7rem;
+    text-align: center;
+    margin: -0.4em 0 0 2.0em;
+  }
+}
+
+.Sub-Title_Menu {
+  @include Sub-Title;
+
+  h2 {
+    @mixin Sub-Title_Decoration {
+      content: '';
+      background-color: $Default_Font-Color;
+      width: 30px;
+      height: 1px;
+    }
+
+    &::before { @include Sub-Title_Decoration; }
+    &::after { @include Sub-Title_Decoration; }
+  }
+}
+
+.Sub-Title_Search {
+  @include Sub-Title;
+
+  h2 {
+    @mixin Sub-Title_Decoration {
+      content: '';
+      background-color: $Default_Font-Color;
+      width: 45px;
+      height: 1px;
+    }
+
+    &::before { @include Sub-Title_Decoration; }
+    &::after { @include Sub-Title_Decoration; }
+  }
+}
+
+.Side-Menu {
+  margin: 16px 0 32px;
+
+  .Welcome {
+    font-size: 0.7rem;
+    margin: 8px 0 0 16px;
+
+    &--Name {
+      font-size: 0.9rem;
+      margin-left: 0.7em;
+    }
+  }
+
+  &--Link {
+    width: 75%;
+    font-size: 0.8rem;
+    text-align: center;
+    border: solid 1px $Default_Font-Color;
+    border-radius: 4px;
+    padding: 0 2px;
+    margin: 0 auto 8px;
+    display: block;
+
+    &:hover {
+      background-color: $Default_Font-Color;
+      color: #ffffff;
+    }
+  }
+}
+
+.Side-YouTube_Search {
+  width: 75%;
+  font-size: 0.8rem;
+  margin: 16px 0 32px 20px;
+
+  .fab { color: #f1224d; }
+  &__Form {
+    margin-top: 4px;
+    position: relative;
+
+    &--Input-Text {
+      background-color: #eeeeee;
+      width: 159px;
+      height: 2.0em;
+      border: none;
+      border-radius: 8px;
+      padding: 0 4px 0 24px;
+    }
+
+    &__Number {
+      font-size: 0.7rem;
+      text-align: right;
+      margin-top: 4px;
+    }
+
+    .fas {
+      color: $Default_Font-Color;
+      position: absolute;
+        top: 8px;
+        left: 8px;
+    }
+  }
+}
