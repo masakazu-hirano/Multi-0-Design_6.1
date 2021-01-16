@@ -3,4 +3,5 @@ class YoutubeVideo < ApplicationRecord
   validates :video_id, uniqueness: true
 
   has_many :users, through: :like_videos
+  has_many :like_videos
 end

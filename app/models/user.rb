@@ -10,4 +10,5 @@ class User < ApplicationRecord
   validates :agreement, acceptance: true
 
   has_many :youtube_videos, through: :like_videos
+  has_many :like_videos
 end
