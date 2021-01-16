@@ -11,8 +11,8 @@
   </head>
 
   <body>
-    <header class='Header'>
-      <div class='Header__Width'>
+    <header>
+      <div class='Contents'>
         <h1>
           <%= link_to root_path do %>
             <%= I18n.t('title') %>
@@ -49,6 +49,19 @@
         </nav>
       </div>
     </header>
+    <section class='Header_Search'>
+      <%= form_with url: youtube_videos_path, class: 'Header_Search__Form', local: true do |form| %>
+        <%= form.search_field :search, placeholder: 'YouTube 動画検索', class: 'Header_Search__Form--Input-Text' %>
+
+        <div class='Header_Search__Form__Number'>
+          検索件数：<br />
+          <%= form.radio_button :count, 1, checked: 'checked' %> 1件，
+          <%= form.radio_button :count, 3 %> 3件，
+          <%= form.radio_button :count, 5 %> 5件
+        </div>
+      <% end %>
+      <i class='fas fa-search'></i>
+    </section>
 
     <%= yield %>
   </body>
