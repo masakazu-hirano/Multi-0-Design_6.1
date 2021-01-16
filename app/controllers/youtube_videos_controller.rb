@@ -1,5 +1,6 @@
 class YoutubeVideosController < ApplicationController
   def index
+    @welcome_time = Time.now.strftime('%H').to_i
     @videos = YoutubeVideo.all
     @video_likes = LikeVideo.all
   end
