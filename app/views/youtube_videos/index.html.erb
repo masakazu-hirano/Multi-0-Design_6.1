@@ -1,158 +1,45 @@
-<nav class='Global_Navi'>
-  <div class='Global_Navi__Menu'>
-    <%= link_to '#', class: 'Global_Navi__Menu--Link' do %>
-      全商品 <br> ALL
-    <% end %>
-    <%= link_to '#', class: 'Global_Navi__Menu--Link' do %>
-      メンズ <br> Man
-    <% end %>
-    <%= link_to '#', class: 'Global_Navi__Menu--Link' do %>
-      レディース <br> Woman
-    <% end %>
-    <%= link_to '#', class: 'Global_Navi__Menu--Link' do %>
-      キッズ <br> Kid's
-    <% end %>
-  </div>
-</nav>
+<section class='Main_Contents'>
+  <section class='Left_Column'>
+    <%= render partial: 'render/left-column' %>
+  </section>
 
-<section class='Contents'>
-  <section class='Contents__Body'>
-    <section class='Left_Column'>
-      <%= render partial: 'render/left-column' %>
-    </section>
+  <section class='Right_Column'>
+    <% session[:video_lists].each do |video_list| %>
+      <div class='YouTube_Search-Result'>
+        <h2> <%= video_list['title'] %> </h2>
 
-    <section class='Right_Column'>
-      <div class='Right_Column__Video-Lists'>
-        <% if session[:video_search_count] == 1 %>
-          <div class='Right_Column__Video-Lists__Video'>
-            <h2> <%= session[:video_lists_1].to_h['title'] %> </h2>
+        <p class='YouTube_Search-Result__Tag'>
+          動画配信日：<%= Date.parse(video_list['release_date']).strftime('%Y年 %m月 %d日') %>
+        </p><br />
+        <p class='YouTube_Search-Result__Tag'>
+          チャンネル名：<%= video_list['channel'] %>
+        </p>
 
-            <p class='Right_Column__Video-Lists__Video__Release'>
-              動画配信日：<%= Date.parse(session[:video_lists_1].to_h['release_date']).strftime('%Y年 %m月 %d日') %>
-            </p><br />
-            <p class='Right_Column__Video-Lists__Video__Release'>
-              チャンネル名：<%= session[:video_lists_1].to_h['channel'] %>
-            </p>
-            <iframe src='https://www.youtube.com/embed/<%= session[:video_lists_1].to_h['video_id'] %>?cc_load_policy=0?rel=0' allow='gyroscope; picture-in-picture' allowfullscreen></iframe>
-          </div>
+        <div class='YouTube_Search-Result__Movie'>
+          <iframe src='https://www.youtube.com/embed/<%= video_list['video_id'] %>?cc_load_policy=0?rel=0' allow='gyroscope; picture-in-picture' allowfullscreen></iframe>
 
-        <% elsif session[:video_search_count] == 3 %>
-          <div class='Right_Column__Video-Lists__Video'>
-            <h2>
-              <%= session[:video_lists_1].to_h['title'] %>
-            </h2>
-
-            <p class='Right_Column__Video-Lists__Video__Release'>
-              動画配信日：<%= Date.parse(session[:video_lists_1].to_h['release_date']).strftime('%Y年 %m月 %d日') %>
-            </p><br />
-            <p class='Right_Column__Video-Lists__Video__Release'>
-              チャンネル名：<%= session[:video_lists_1].to_h['channel'] %>
-            </p>
-            <iframe src='https://www.youtube.com/embed/<%= session[:video_lists_1].to_h['video_id'] %>?cc_load_policy=0?rel=0' allow='gyroscope; picture-in-picture' allowfullscreen></iframe>
-          </div>
-
-          <div class='Right_Column__Video-Lists__Video'>
-            <h2>
-              <%= session[:video_lists_2].to_h['title'] %>
-            </h2>
-
-            <p class='Right_Column__Video-Lists__Video__Release'>
-              動画配信日：<%= Date.parse(session[:video_lists_2].to_h['release_date']).strftime('%Y年 %m月 %d日') %>
-            </p><br />
-            <p class='Right_Column__Video-Lists__Video__Release'>
-              チャンネル名：<%= session[:video_lists_2].to_h['channel'] %>
-            </p>
-            <iframe src='https://www.youtube.com/embed/<%= session[:video_lists_2].to_h['video_id'] %>?cc_load_policy=0?rel=0' allow='gyroscope; picture-in-picture' allowfullscreen></iframe>
-          </div>
-
-          <div class='Right_Column__Video-Lists__Video'>
-            <h2>
-              <%= session[:video_lists_3].to_h['title'] %>
-            </h2>
-
-            <p class='Right_Column__Video-Lists__Video__Release'>
-              動画配信日：<%= Date.parse(session[:video_lists_3].to_h['release_date']).strftime('%Y年 %m月 %d日') %>
-            </p><br />
-            <p class='Right_Column__Video-Lists__Video__Release'>
-              チャンネル名：<%= session[:video_lists_3].to_h['channel'] %>
-            </p>
-            <iframe src='https://www.youtube.com/embed/<%= session[:video_lists_3].to_h['video_id'] %>?cc_load_policy=0?rel=0' allow='gyroscope; picture-in-picture' allowfullscreen></iframe>
-          </div>
-
-        <% elsif session[:video_search_count] == 5 %>
-          <div class='Right_Column__Video-Lists__Video'>
-            <h2>
-              <%= session[:video_lists_1].to_h['title'] %>
-            </h2>
-
-            <p class='Right_Column__Video-Lists__Video__Release'>
-              動画配信日：<%= Date.parse(session[:video_lists_1].to_h['release_date']).strftime('%Y年 %m月 %d日') %>
-            </p><br />
-            <p class='Right_Column__Video-Lists__Video__Release'>
-              チャンネル名：<%= session[:video_lists_1].to_h['channel'] %>
-            </p>
-            <iframe src='https://www.youtube.com/embed/<%= session[:video_lists_1].to_h['video_id'] %>?cc_load_policy=0?rel=0' allow='gyroscope; picture-in-picture' allowfullscreen></iframe>
-          </div>
-
-          <div class='Right_Column__Video-Lists__Video'>
-            <h2>
-              <%= session[:video_lists_2].to_h['title'] %>
-            </h2>
-
-            <p class='Right_Column__Video-Lists__Video__Release'>
-              動画配信日：<%= Date.parse(session[:video_lists_2].to_h['release_date']).strftime('%Y年 %m月 %d日') %>
-            </p><br />
-            <p class='Right_Column__Video-Lists__Video__Release'>
-              チャンネル名：<%= session[:video_lists_2].to_h['channel'] %>
-            </p>
-            <iframe src='https://www.youtube.com/embed/<%= session[:video_lists_2].to_h['video_id'] %>?cc_load_policy=0?rel=0' allow='gyroscope; picture-in-picture' allowfullscreen></iframe>
-          </div>
-
-          <div class='Right_Column__Video-Lists__Video'>
-            <h2>
-              <%= session[:video_lists_3].to_h['title'] %>
-            </h2>
-
-            <p class='Right_Column__Video-Lists__Video__Release'>
-              動画配信日：<%= Date.parse(session[:video_lists_3].to_h['release_date']).strftime('%Y年 %m月 %d日') %>
-            </p><br />
-            <p class='Right_Column__Video-Lists__Video__Release'>
-              チャンネル名：<%= session[:video_lists_3].to_h['channel'] %>
-            </p>
-            <iframe src='https://www.youtube.com/embed/<%= session[:video_lists_3].to_h['video_id'] %>?cc_load_policy=0?rel=0' allow='gyroscope; picture-in-picture' allowfullscreen></iframe>
-          </div>
-
-          <div class='Right_Column__Video-Lists__Video'>
-            <h2>
-              <%= session[:video_lists_4].to_h['title'] %>
-            </h2>
-
-            <p class='Right_Column__Video-Lists__Video__Release'>
-              動画配信日：<%= Date.parse(session[:video_lists_4].to_h['release_date']).strftime('%Y年 %m月 %d日') %>
-            </p><br />
-            <p class='Right_Column__Video-Lists__Video__Release'>
-              チャンネル名：<%= session[:video_lists_4].to_h['channel'] %>
-            </p>
-            <iframe src='https://www.youtube.com/embed/<%= session[:video_lists_4].to_h['video_id'] %>?cc_load_policy=0?rel=0' allow='gyroscope; picture-in-picture' allowfullscreen></iframe>
-          </div>
-
-          <div class='Right_Column__Video-Lists__Video'>
-            <h2>
-              <%= session[:video_lists_5].to_h['title'] %>
-            </h2>
-
-            <p class='Right_Column__Video-Lists__Video__Release'>
-              動画配信日：<%= Date.parse(session[:video_lists_5].to_h['release_date']).strftime('%Y年 %m月 %d日') %>
-            </p><br />
-            <p class='Right_Column__Video-Lists__Video__Release'>
-              チャンネル名：<%= session[:video_lists_5].to_h['channel'] %>
-            </p>
-            <iframe src='https://www.youtube.com/embed/<%= session[:video_lists_5].to_h['video_id'] %>?cc_load_policy=0?rel=0' allow='gyroscope; picture-in-picture' allowfullscreen></iframe>
-          </div>
-        <% end %>
+          <% if user_signed_in? %>
+            <% if @videos.where(video_id: video_list['video_id']).exists? %>
+              <% if @video_likes.where(youtube_video_id: @videos.where(video_id: video_list['video_id'])[0].id, user_id: current_user.id).exists? %>
+                <%= link_to video_like_path(@video_likes.where(youtube_video_id: @videos.where(video_id: video_list['video_id'])[0].id, user_id: current_user.id)[0].id), method: :delete, class: 'YouTube_Search-Result__Movie__Favorite' do %>
+                  <i class="fas fa-bookmark"></i>
+                  <p>ブックマークを<span class='YouTube_Search-Result__Movie__Favorite--Text_Decoration'>解除</span>する</p>
+                <% end %>
+              <% else %>
+                <%= link_to(video_likes_path(channel: video_list['channel'], video_id: video_list['video_id'], title: video_list['title'], thumbnail: video_list['thumbnail'], release_date: video_list['release_date'], user_id: current_user.id), method: :post, class: 'YouTube_Search-Result__Movie__Favorite') do %>
+                  <i class="far fa-bookmark"></i>
+                  <p>動画を<span class='YouTube_Search-Result__Movie__Favorite--Text_Decoration'>ブックマーク</span>する</p>
+                <% end %>
+              <% end %>
+            <% else %>
+              <%= link_to(video_likes_path(channel: video_list['channel'], video_id: video_list['video_id'], title: video_list['title'], thumbnail: video_list['thumbnail'], release_date: video_list['release_date'], user_id: current_user.id), method: :post, class: 'YouTube_Search-Result__Movie__Favorite') do %>
+                <i class="far fa-bookmark"></i>
+                <p>動画を<span class='YouTube_Search-Result__Movie__Favorite--Text_Decoration'>ブックマーク</span>する</p>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
-    </section>
+    <% end %>
   </section>
 </section>
-
-<%#= image_tag session[:video_lists_1].to_h['thumbnail'] %>

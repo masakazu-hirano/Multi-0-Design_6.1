@@ -11,8 +11,8 @@
   </head>
 
   <body>
-    <header class='Header'>
-      <div class='Header__Width'>
+    <header>
+      <div class='Contents'>
         <h1>
           <%= link_to root_path do %>
             <%= I18n.t('title') %>
@@ -40,7 +40,7 @@
                 <i class="fas fa-sign-in-alt"></i> ログイン
               <% end %>
             <% end %>
-            <% unless current_page?(new_user_registration_path) || current_page?(youtube_videos_path) %>
+            <% unless current_page?(new_user_registration_path) || current_page?(youtube_videos_path) || controller.controller_name == 'youtube_videos' && controller.action_name == 'create' %>
               <%= link_to new_user_registration_path do %>
                 <i class="fas fa-user-plus"></i> 新規登録
               <% end %>
@@ -49,6 +49,19 @@
         </nav>
       </div>
     </header>
+    <section class='Header_Search'>
+      <%= form_with url: youtube_videos_path, class: 'Header_Search__Form', local: true do |form| %>
+        <%= form.search_field :search, placeholder: 'YouTube 動画検索', class: 'Header_Search__Form--Input-Text' %>
+
+        <div class='Header_Search__Form__Number'>
+          検索件数：<br />
+          <%= form.radio_button :count, 1, checked: 'checked' %> 1件，
+          <%= form.radio_button :count, 3 %> 3件，
+          <%= form.radio_button :count, 5 %> 5件
+        </div>
+      <% end %>
+      <i class='fas fa-search'></i>
+    </section>
 
     <%= yield %>
   </body>

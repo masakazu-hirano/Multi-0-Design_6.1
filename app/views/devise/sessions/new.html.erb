@@ -1,42 +1,55 @@
-<section class='Contents'>
-  <section class='Contents__Body'>
-    <section class='Left_Column'>
-      <%= render partial: 'render/left-column' %>
-    </section>
+<section class='Main_Contents'>
+  <section class='Left_Column'>
+    <div class='Sub-Title_Login'>
+      <h2><i class='fas fa-sign-in-alt'></i> ログイン</h2>
+      <p class='Sub-Title_Login--Down_Text'>Login</p>
+    </div>
 
-    <section class='Right_Column'>
-      <section id='Login_Page'>
-        <div class='Login'>
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <div class="field Login__Input">
-              <p class='Login__Input--Required'>必須</p>
-              <%= f.label :email, 'メールアドレス' %><br />
-              <%= f.email_field :email, autocomplete: 'email', class: 'Login__Input--E-Mail', required: :true %>
-            </div>
+    <div class='Login_Form'>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class='field'>
+          <%= f.label :email, 'メールアドレス' %><br />
+          <%= f.email_field :email, autocomplete: 'email', class: 'Login_Form--Input', required: :true %>
+        </div>
 
-            <div class="field Login__Input">
-              <p class='Login__Input--Required'>必須</p>
-              <%= f.label :password, 'パスワード' %><br />
-              <%= f.password_field :password, autocomplete: 'current-password', class: 'Login__Input--Password', required: :true %>
-            </div>
+        <div class='field'>
+          <%= f.label :password, 'パスワード' %><br />
+          <%= f.password_field :password, autocomplete: 'current-password', class: 'Login_Form--Input', required: :true %>
+        </div>
 
-            <%= link_to 'パスワードを忘れた方はこちら…', '#', class: 'Login--Password-Reset' %>
-            <%#= link_to 'パスワードを忘れた方はこちら…', new_user_password_path, class: 'Login--Password-Reset' %>
+        <% if devise_mapping.rememberable? %>
+          <div class='field Login_Form__Password-Memory'>
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me, 'パスワードを記憶する。', class: 'Login_Form__Password-Memory--Text' %>
+          </div>
+        <% end %>
 
-            <% if devise_mapping.rememberable? %>
-              <div class="field Login__Password-Memory">
-                <%= f.check_box :remember_me %>
-                <%= f.label :remember_me, 'パスワードを記憶する。', class: 'Login__Password-Memory--Text' %>
-              </div>
-            <% end %>
+        <%= link_to 'パスワードを忘れた方…', '#', class: 'Login_Form--Password_Reset' %>
+        <%#= link_to 'パスワードを忘れた方はこちら…', new_user_password_path, class: 'Login_Form--Password_Reset' %>
 
-            <div class="actions Login__Submit">
-              <%= f.submit 'ログイン', class: 'Login__Submit--Button' %><br>
-              <%= link_to '採用ご担当者様はこちら…', users_recruiter_sign_in_path, class: 'Login__Submit--Recruit' %>
-            </div>
+        <div class='actions'>
+          <%= f.submit 'ログイン', class: 'Login_Form--Submit' %><br>
+          <%= link_to '採用ご担当者様はこちら…', users_recruiter_sign_in_path, class: 'Login_Form--Recruit' %>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
+  <section class='Right_Column'>
+    <div class='Popular_Movies'>
+      <% @video_likes = YoutubeVideo.includes(:like_videos).limit(6).sort {|a,b| b.like_videos.size <=> a.like_videos.size} %>
+      <% @video_likes.each do |video| %>
+        <div class='YouTube_Movie'>
+          <p class='YouTube_Movie--Title'><%= video.title %></p>
+          <%= image_tag video.thumbnail %>
+          <p class='YouTube_Movie--Follower'>
+            <span class='YouTube_Movie--Follower--Text-Big'><%= video.like_videos.count %></span> 人がブックマークしています。
+          </p>
+          <%= link_to youtube_video_path(video.id), class: 'YouTube_Movie__Link' do %>
+            動画を観る
           <% end %>
         </div>
-      </section>
-    </section>
+      <% end %>
+    </div>
   </section>
 </section>

@@ -3,154 +3,160 @@
 @import 'font-awesome';
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Noto+Serif+JP&family=Parisienne&display=swap');
   /* Google Fonts から "Noto Sans JP"，"Noto Serif JP"，"Parisienne" をインポートする。 */
+$Default_Font-Color: #333333;
 
 body {
   width: 100vw;
+  color: $Default_Font-Color;
   font-family: 'Noto Sans JP', sans-serif;
   font-size: 16px;
-  color: rgba(#333333, 1.0);
 
   a {
-    color: rgba(#333333, 1.0);
+    color: $Default_Font-Color;
     text-decoration: none;
   }
 
   @import 'header';
 
-  .Global_Navi {
+  .Main_Contents {
     max-width: 1024px;
-    height: 48px;
     margin: 0 auto;
+    display: flex;
+      flex-direction: row;
 
-    &__Menu {
-      width: 60%;
-      margin: 0 auto;
-      display: flex;
-        justify-content: space-around;
-
-      &--Link {
-        font-family: 'Noto Serif JP', serif;
-        font-size: 0.7rem;
-        text-align: center;
-        padding: 5px 32px 6px;
-
-        &::first-line { font-size: 0.9rem; }
-        &:hover {
-          border-bottom: solid 1px #333333;
-          padding: 5px 32px;
-        }
-      }
+    .Left_Column {
+      width: 200px;
+      margin-right: 16px;
+      @import 'left-column';
     }
-  }
 
-  .Contents {
-    height: 300px;
+    .Right_Column {
+      width: calc(100vw - 200px);
 
-    &__Body {
-      width: 100vw;
-      max-width: 1024px;
-      height: 300px;
-      margin: 0 auto;
-      display: flex;
-        justify-content: space-between;
+      .Popular_Movies {
+        width: 240 * 3px + 48px;
+        padding: 8px 0 0 8px;
+        margin: 0 auto;
+        display: flex;
+          flex-wrap: wrap;
 
-      .Left_Column {
-        width: 240 - 52px;
-        height: 300px;
-        margin-top: 80px;
+        .YouTube_Movie {
+          width: 240px;
+          margin: 0 16px 48px 0;
+          img { width: 480 * 0.5px; }
 
-        &__Title-Menu {
-          font-family: 'Noto Serif JP', serif;
-          margin-bottom: 16px;
-          position: relative;
-
-          h2 {
-            display: flex;
-              justify-content: center;
-              align-items: center;
-
-            &::before {
-              content: '';
-              background-color: #333333;
-              width: 30px;
-              height: 1px;
-              margin-right: 8px;
-            }
-
-            &::after {
-              content: '';
-              background-color: #333333;
-              width: 30px;
-              height: 1px;
-              margin-left: 8px;
-            }
+          &--Title {
+            height: 3.0em;
+            font-size: 0.8rem;
+            overflow: hidden;
+            overflow-y: scroll;
           }
 
-          &--Down_Text {
+          &--Follower {
+            color: #ffffff;
             font-size: 0.7rem;
-            text-align: center;
-            margin: -0.4em 0 0 2.0em;
-          }
+            text-align: right;
+            position: relative;
+              top: -28px;
 
-          .fas { margin-right: 4px; }
-        }
-
-        &__Title-Search {
-          font-family: 'Noto Serif JP', serif;
-          margin: 48px 0 16px;
-          position: relative;
-
-          h2 {
-            display: flex;
-              justify-content: center;
-              align-items: center;
-
-            &::before {
-              content: '';
-              background-color: #333333;
-              width: 45px;
-              height: 1px;
-              margin-right: 8px;
-            }
-
-            &::after {
-              content: '';
-              background-color: #333333;
-              width: 45px;
-              height: 1px;
-              margin-left: 8px;
+            &--Text-Big {
+              font-size: 1.0rem;
+              font-weight: bold;
             }
           }
 
-          &--Down_Text {
-            font-size: 0.7rem;
-            text-align: center;
-            margin: -0.4em 0 0 2.0em;
-          }
-
-          .fas { margin-right: 4px; }
-        }
-
-        &__Side-Menu {
-          .Welcome {
-            font-size: 0.7rem;
-            margin: 8px 0 0 16px;
-
-            &--Name {
-              font-size: 0.9rem;
-              margin: 0 0 0 0.7em;
-            }
-          }
-
-          &--Link {
-            width: 153px;
+          &__Link {
+            width: 100%;
             font-size: 0.8rem;
             text-align: center;
             border: solid 1px #333333;
+            border-radius: 8px;
+            margin-top: -24px;
+            display: block;
+
+            &:hover {
+              background-color: #007bff;
+              color: #ffffff;
+              border: solid 1px #007bff;
+            }
+          }
+        }
+      }
+
+      .YouTube_Search-Result {
+        width: 784px;
+        margin-bottom: 80px;
+
+        h2 {
+          background-color: rgba($Default_Font-Color, 0.1);
+          font-size: 1.1rem;
+          border-radius: 8px;
+          box-shadow: 2px 2px 4px rgba($Default_Font-Color, 0.2);
+          padding: 4px;
+          margin-bottom: 16px;
+        }
+
+        &__Tag {
+          background: rgba(#ff6600, 0.4);
+          font-size: 0.8rem;
+          padding: 1px 8px 1px 12px;
+          margin: 0 0 2px 32px;
+          display: inline-block;
+          position: relative;
+
+          &:before {
+            content: '';
+            border-style: solid;
+            border-color: transparent rgba(#ff6600, 0.4) transparent transparent;
+            border-width: 11px 16px 10px 0;
+            position: absolute;
+              top: 0;
+              left: -16px;
+          }
+
+          &:after {
+            content: '';
+            background: #ffffff;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            position: absolute;
+              top: calc(50% - 4px);
+              left: -4px;
+          }
+        }
+
+        &__Movie {
+          margin: 16px 0 0 16px;
+          display: flex;
+            flex-direction: row;
+
+          iframe {
+            width: 560px;
+            height: 315px;
+            border: none;
+            margin-right: 8px;
+            display: block;
+          }
+
+          &__Favorite {
+            height: 1.3em;
+            border: solid 1px #333333;
             border-radius: 4px;
-            padding: 0 2px;
-            margin: 8px 0 0 14px;
-            display: inline-block;
+            padding: 8px;
+            display: flex;
+              flex-direction: row;
+
+            .fa-bookmark {
+              font-size: 1.5rem;
+              margin-right: 8px;
+            }
+
+            p { font-size: 0.7rem; }
+            &--Text_Decoration {
+              font-size: 1.0rem;
+              font-weight: bold;
+            }
 
             &:hover {
               background-color: #333333;
@@ -158,105 +164,91 @@ body {
             }
           }
         }
+      }
 
-        &__YouTube-Search {
-          .fab { color: #f1224d; }
-          width: 158px;
+      .Movie_Show {
+        width: 784px;
+
+        h2 {
+          background-color: rgba($Default_Font-Color, 0.1);
+          font-size: 1.1rem;
+          border-radius: 8px;
+          box-shadow: 2px 2px 4px rgba($Default_Font-Color, 0.2);
+          padding: 4px;
+          margin-bottom: 16px;
+        }
+
+        &__Tag {
+          background: rgba(#ff6600, 0.4);
           font-size: 0.8rem;
-          margin-left: 15px;
+          padding: 1px 8px 1px 12px;
+          margin: 0 0 2px 32px;
+          display: inline-block;
+          position: relative;
 
-          &__Form {
-            text-align: center;
-            margin-top: 8px;
-            position: relative;
+          &:before {
+            content: '';
+            border-style: solid;
+            border-color: transparent rgba(#ff6600, 0.4) transparent transparent;
+            border-width: 11px 16px 10px 0;
+            position: absolute;
+              top: 0;
+              left: -16px;
+          }
 
-            &__Text {
-              background-color: #eeeeee;
-              width: 95%;
-              height: 2.0em;
-              border: none;
-              border-radius: 8px;
-              padding: 0 4px 0 24px;
+          &:after {
+            content: '';
+            background: #ffffff;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            position: absolute;
+              top: calc(50% - 4px);
+              left: -4px;
+          }
+        }
+
+        &__Movie {
+          margin: 16px 0 0 16px;
+          display: flex;
+            flex-direction: row;
+
+          iframe {
+            width: 560px;
+            height: 315px;
+            border: none;
+            margin-right: 8px;
+            display: block;
+          }
+
+          &__Favorite {
+            height: 1.3em;
+            border: solid 1px #333333;
+            border-radius: 4px;
+            padding: 8px;
+            display: flex;
+              flex-direction: row;
+
+            .fa-bookmark {
+              font-size: 1.5rem;
+              margin-right: 8px;
             }
 
-            &--Icon {
-              color: #333333;
-              position: absolute;
-                top: 8px;
-                left: 8px;
+            p { font-size: 0.7rem; }
+            &--Text_Decoration {
+              font-size: 1.0rem;
+              font-weight: bold;
             }
 
-            &__Count {
-              font-size: 0.7rem;
-              text-align: right;
-              margin-top: 4px;
+            &:hover {
+              background-color: #333333;
+              color: #ffffff;
             }
           }
         }
       }
-
-      .Right_Column {
-        margin-top: 80px;
-
-        &__Video-Lists {
-          width: 784px;
-          margin-left: auto;
-
-          &__Video {
-            margin-bottom: 80px;
-
-            h2 {
-              background-color: rgba(#333333, 0.1);
-              font-size: 1.1rem;
-              border-radius: 8px;
-              box-shadow: 2px 2px 4px rgba(#333333, 0.2);
-              padding: 4px;
-              margin-bottom: 16px;
-            }
-
-            &__Release {
-              background: rgba(#ff6600, 0.4);
-              font-size: 0.8rem;
-              padding: 1px 8px 1px 12px;
-              margin: 0 0 2px 32px;
-              display: inline-block;
-              position: relative;
-
-              &:before {
-                content: '';
-                border-style: solid;
-                border-color: transparent rgba(#ff6600, 0.4) transparent transparent;
-                border-width: 11px 16px 10px 0;
-                position: absolute;
-                  top: 0;
-                  left: -16px;
-              }
-
-              &:after {
-                content: '';
-                background: #ffffff;
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-                position: absolute;
-                  top: calc(50% - 4px);
-                  left: -4px;
-              }
-            }
-
-            iframe {
-              width: 560px;
-              height: 315px;
-              border: none;
-              margin: 16px 0 0 16px;
-              display: block;
-            }
-          }
-        }
-      }
-
-      @import 'devise';
-
     }
+
+    @import 'devise';
   }
 }

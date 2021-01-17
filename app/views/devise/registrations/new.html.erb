@@ -1,52 +1,48 @@
-<section class='Contents'>
-  <section class='Contents__Body'>
-    <section class='Left_Column'>
-      <%= render partial: 'render/left-column' %>
-    </section>
+<section class='Main_Contents'>
+  <section class='Left_Column'>
+    <%= render partial: 'render/left-column' %>
+  </section>
 
-    <section class='Right_Column'>
-      <section id='Registration_Page'>
-        <div class='Regist'>
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <div class="field Regist__Input">
-              <p class='Regist__Input--Required'>必須</p>
-              <%= f.label :name, 'ユーザー名' %><br />
-              <%= f.text_field :name, class: 'Regist__Input--Name', required: :true %>
-              <span class='Regist__Input--Text'>※ 投稿する際に表示される名前を入力してください。</span>
-            </div>
-
-            <div class="field Regist__Input">
-              <p class='Regist__Input--Required'>必須</p>
-              <%= f.label :email, 'メールアドレス' %><br />
-              <%= f.email_field :email, class: 'Regist__Input--E-Mail', autocomplete: 'email', required: :true %>
-              <span class='Regist__Input--Text'>※ メールアドレスを入力してください。</span>
-            </div>
-
-            <div class="field Regist__Input">
-              <p class='Regist__Input--Required'>必須</p>
-              <%= f.label :password, 'パスワード' %><br />
-              <%= f.password_field :password, class: 'Regist__Input--Password', required: :true %>
-              <span class='Regist__Input--Text'>※ パスワードを半角英数字（ 8文字以上）で入力してください。</span>
-            </div>
-
-            <div class="field Regist__Input">
-              <p class='Regist__Input--Required'>必須</p>
-              <%= f.label :password_confirmation, 'パスワード（確認用）' %><br />
-              <%= f.password_field :password_confirmation, class: 'Regist__Input--Password_Confirm', required: :true %>
-              <span class='Regist__Input--Text'>※ もう一度、パスワードを入力してください。</span>
-            </div>
-
-            <div class="field Regist__Agreement">
-              <%= f.check_box :agreement %>
-              <%= f.label :agreement, '利用規約，プライバシーポリシーに同意する。', class: 'Regist__Agreement--Text' %>
-            </div>
-
-            <div class="actions Regist__Submit">
-              <%= f.submit '新規登録', class: 'Regist__Submit--Button' %><br>
-            </div>
-          <% end %>
+  <section class='Right_Column'>
+    <div class='Regist_Form'>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <div class='field Regist_Form__Flexbox'>
+          <p class='Regist_Form--Required'>必須</p>
+          <%= f.label :name, 'ユーザー名：' %><br />
+          <%= f.text_field :name, class: 'Regist_Form--Input', required: :true %>
+          <p class='Regist_Form--Text'>※ 投稿する際に表示される名前を入力してください。</p>
         </div>
-      </section>
-    </section>
+
+        <div class='field Regist_Form__Flexbox'>
+          <p class='Regist_Form--Required'>必須</p>
+          <%= f.label :email, 'メールアドレス：' %><br />
+          <%= f.email_field :email, class: 'Regist_Form--Input', required: :true %>
+          <p class='Regist_Form--Text'>※ メールアドレスを入力してください。</p>
+        </div>
+
+        <div class='field Regist_Form__Flexbox'>
+          <p class='Regist_Form--Required'>必須</p>
+          <%= f.label :password, 'パスワード：' %><br />
+          <%= f.password_field :password, class: 'Regist_Form--Input', required: :true %>
+          <p class='Regist_Form--Text'>※ パスワードを半角英数字（ 8文字以上）で入力してください。</p>
+        </div>
+
+        <div class='field Regist_Form__Flexbox'>
+          <p class='Regist_Form--Required'>必須</p>
+          <%= f.label :password_confirmation, 'パスワード（確認用）：' %><br />
+          <%= f.password_field :password_confirmation, class: 'Regist_Form--Input', required: :true %>
+          <p class='Regist_Form--Text'>※ もう一度、パスワードを入力してください。</p>
+        </div>
+
+        <div class="field Regist_Form__Agreement">
+          <%= f.check_box :agreement %>
+          <%= f.label :agreement, '利用規約，プライバシーポリシーに同意する。', class: 'Regist_Form__Agreement--Text' %>
+        </div>
+
+        <div class='actions'>
+          <%= f.submit '新規登録', class: 'Regist_Form--Submit' %><br>
+        </div>
+      <% end %>
+    </div>
   </section>
 </section>
