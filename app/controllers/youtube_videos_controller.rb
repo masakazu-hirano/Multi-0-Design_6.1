@@ -69,4 +69,9 @@ class YoutubeVideosController < ApplicationController
     session[:video_lists] = video_lists
     redirect_to youtube_videos_path
   end
+
+  def show
+    @welcome_time = Time.now.strftime('%H').to_i
+    @video = YoutubeVideo.includes(:like_videos).find(params[:id])
+  end
 end
