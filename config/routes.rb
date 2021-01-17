@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   root to: 'influencers#index'
 
   resources :influencers, only: :index
-  resources :youtube_videos, only: [:index, :create]
+  resources :youtube_videos, only: [:index, :create, :show]
   resources :video_likes, only: [:create, :destroy]
 end
