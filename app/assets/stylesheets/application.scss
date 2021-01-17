@@ -82,10 +82,95 @@ body {
           }
         }
       }
+
+      .YouTube_Search-Result {
+        width: 784px;
+        margin-bottom: 80px;
+
+        h2 {
+          background-color: rgba($Default_Font-Color, 0.1);
+          font-size: 1.1rem;
+          border-radius: 8px;
+          box-shadow: 2px 2px 4px rgba($Default_Font-Color, 0.2);
+          padding: 4px;
+          margin-bottom: 16px;
+        }
+
+        &__Tag {
+          background: rgba(#ff6600, 0.4);
+          font-size: 0.8rem;
+          padding: 1px 8px 1px 12px;
+          margin: 0 0 2px 32px;
+          display: inline-block;
+          position: relative;
+
+          &:before {
+            content: '';
+            border-style: solid;
+            border-color: transparent rgba(#ff6600, 0.4) transparent transparent;
+            border-width: 11px 16px 10px 0;
+            position: absolute;
+              top: 0;
+              left: -16px;
+          }
+
+          &:after {
+            content: '';
+            background: #ffffff;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            position: absolute;
+              top: calc(50% - 4px);
+              left: -4px;
+          }
+        }
+
+        &__Movie {
+          margin: 16px 0 0 16px;
+          display: flex;
+            flex-direction: row;
+
+          iframe {
+            width: 560px;
+            height: 315px;
+            border: none;
+            margin-right: 8px;
+            display: block;
+          }
+
+          &__Favorite {
+            height: 1.3em;
+            border: solid 1px #333333;
+            border-radius: 4px;
+            padding: 8px;
+            display: flex;
+              flex-direction: row;
+
+            .fa-bookmark {
+              font-size: 1.5rem;
+              margin-right: 8px;
+            }
+
+            p { font-size: 0.7rem; }
+            &--Text_Decoration {
+              font-size: 1.0rem;
+              font-weight: bold;
+            }
+
+            &:hover {
+              background-color: #333333;
+              color: #ffffff;
+            }
+          }
+        }
+      }
     }
+
+    @import 'devise';
   }
 
-  @import 'devise';
+
 
   .Contents {
     // height: 300px;
@@ -119,7 +204,7 @@ body {
               margin-bottom: 16px;
             }
 
-            &__Release {
+            &__Tag {
               background: rgba(#ff6600, 0.4);
               font-size: 0.8rem;
               padding: 1px 8px 1px 12px;
