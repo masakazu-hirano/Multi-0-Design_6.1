@@ -1,24 +1,8 @@
-# README
+# Multi-0-Design
+- 名称：Multi-0-Design
+- ふりがな：まるちでざいん
+- 本番環境：http://multi-0-design.work
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Web アプリケーションの企画概要
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[Web サービス企画書 | ポートフォリオ（Multi-0-Design）解説](https://qiita.com/Hirano_Tech/private/43ebab1548b133266a4d) をご覧ください。
