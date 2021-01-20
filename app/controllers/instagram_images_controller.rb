@@ -5,8 +5,13 @@ class InstagramImagesController < ApplicationController
 
   def create
     # ↓ Instagram ハッシュタグ ノードID を取得する。 ↓
-    business_id = Rails.application.credentials.Instagram[:Business_ID]
-    access_token = Rails.application.credentials.Instagram[:Access_Token]
+    if Rails.env.development?
+      business_id = Rails.application.credentials.Instagram[:Business_ID]
+      access_token = Rails.application.credentials.Instagram[:Access_Token]
+    elsif Rails.env.production?
+      business_id = ENV['Instagram_Business_ID']
+      access_token = ENV['Instagram_Access_Token']
+    end
 
     search_word = URI.encode_www_form(q: params[:search])
     tag_id_uri = URI.parse("https://graph.facebook.com/v9.0/ig_hashtag_search?user_id=#{business_id}&#{search_word}&access_token=#{access_token}")
