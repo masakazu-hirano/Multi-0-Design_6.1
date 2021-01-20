@@ -40,7 +40,7 @@
                 <i class="fas fa-sign-in-alt"></i> ログイン
               <% end %>
             <% end %>
-            <% unless current_page?(new_user_registration_path) || current_page?(youtube_videos_path) || controller.controller_name == 'youtube_videos' && controller.action_name == 'create' %>
+            <% unless current_page?(new_user_registration_path)|| current_page?(instagram_images_path) || current_page?(youtube_videos_path) || controller.controller_name == 'youtube_videos' && controller.action_name == 'create' %>
               <%= link_to new_user_registration_path do %>
                 <i class="fas fa-user-plus"></i> 新規登録
               <% end %>

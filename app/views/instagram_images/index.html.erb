@@ -1,0 +1,34 @@
+<section class='Main_Contents'>
+  <section class='Left_Column'>
+    <%= render partial: 'render/left-column' %>
+  </section>
+
+  <section class='Right_Column'>
+    <div class='Instagram_Search-Result'>
+      <% Rails.cache.fetch('instagram_images').each do |image_list| %>
+        <p class='Instagram_Search-Result__Tag'>
+          投稿日：<%= Date.parse(image_list[:timestamp]).strftime('%Y年 %m月 %d日') %>
+        </p><br />
+        <p class='Instagram_Search-Result__Tag'>
+          <i class="far fa-thumbs-up"></i> いいね！：<%= image_list[:like_count] %>
+        </p><br />
+
+        <% if image_list[:media_type] == 'CAROUSEL_ALBUM' %>
+          <div class='Album_Carousel'>
+            <% image_list[:album_images].each do |album_image| %>
+              <%= link_to image_list[:permalink], target: :_blank, class: '' do %>
+                <%= image_tag album_image %>
+              <% end %>
+            <% end %>
+          </div>
+        <% elsif image_list[:media_type] == 'IMAGE' %>
+          <div class='Album_Carousel'>
+            <%= link_to image_list[:permalink], target: :_blank, class: '' do %>
+              <%= image_tag image_list[:media_url] %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </section>
+</section>
