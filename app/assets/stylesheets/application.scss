@@ -1,0 +1,323 @@
+@import 'reset';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Noto+Serif+JP&family=Parisienne&display=swap');
+  /* Google Fonts から "Noto Sans JP"，"Noto Serif JP"，"Parisienne" をインポートする。 */
+$Default_Font-Color: #333333;
+
+body {
+  width: 100vw;
+  color: $Default_Font-Color;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 16px;
+
+  a {
+    color: $Default_Font-Color;
+    text-decoration: none;
+  }
+
+  @import 'header';
+
+  .Main_Contents {
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+      flex-direction: row;
+
+    .Left_Column {
+      width: 200px;
+      margin-right: 16px;
+      @import 'left-column';
+    }
+
+    .Right_Column {
+      width: calc(100vw - 200px);
+
+      .Popular_Movies {
+        width: 240 * 3px + 48px;
+        padding: 8px 0 0 8px;
+        margin: 0 auto;
+        display: flex;
+          flex-wrap: wrap;
+
+        .YouTube_Movie {
+          width: 240px;
+          margin: 0 16px 48px 0;
+          img { width: 480 * 0.5px; }
+
+          &--Title {
+            height: 3.0em;
+            font-size: 0.8rem;
+            overflow: hidden;
+            overflow-y: scroll;
+          }
+
+          &--Follower {
+            color: #ffffff;
+            font-size: 0.7rem;
+            text-align: right;
+            position: relative;
+              top: -28px;
+
+            &--Text-Big {
+              font-size: 1.0rem;
+              font-weight: bold;
+            }
+          }
+
+          &__Link {
+            width: 100%;
+            font-size: 0.8rem;
+            text-align: center;
+            border: solid 1px #333333;
+            border-radius: 8px;
+            margin-top: -24px;
+            display: block;
+
+            &:hover {
+              background-color: #007bff;
+              color: #ffffff;
+              border: solid 1px #007bff;
+            }
+          }
+        }
+      }
+
+      .Instagram_Search-Result {
+        &__Tag {
+          background: rgba(#ff6600, 0.4);
+          font-size: 0.8rem;
+          padding: 1px 8px 1px 12px;
+          margin: 0 0 4px 16px;
+          display: inline-block;
+          position: relative;
+
+          &:before {
+            content: '';
+            border-style: solid;
+            border-color: transparent rgba(#ff6600, 0.4) transparent transparent;
+            border-width: 11px 16px 10px 0;
+            position: absolute;
+              top: 0;
+              left: -16px;
+          }
+
+          &:after {
+            content: '';
+            background: #ffffff;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            position: absolute;
+              top: calc(50% - 4px);
+              left: -4px;
+          }
+        }
+
+        .Album_Carousel {
+          white-space: nowrap;
+          overflow-x: auto;
+          width: 787px;
+          margin: 8px 0 48px;
+
+          img {
+            width: 480 * 0.5px;
+            margin-right: 16px;
+          }
+        }
+      }
+
+      .YouTube_Search-Result {
+        width: 784px;
+        margin-bottom: 80px;
+
+        h2 {
+          background-color: rgba($Default_Font-Color, 0.1);
+          font-size: 1.1rem;
+          border-radius: 8px;
+          box-shadow: 2px 2px 4px rgba($Default_Font-Color, 0.2);
+          padding: 4px;
+          margin-bottom: 16px;
+        }
+
+        &__Tag {
+          background: rgba(#ff6600, 0.4);
+          font-size: 0.8rem;
+          padding: 1px 8px 1px 12px;
+          margin: 0 0 2px 32px;
+          display: inline-block;
+          position: relative;
+
+          &:before {
+            content: '';
+            border-style: solid;
+            border-color: transparent rgba(#ff6600, 0.4) transparent transparent;
+            border-width: 11px 16px 10px 0;
+            position: absolute;
+              top: 0;
+              left: -16px;
+          }
+
+          &:after {
+            content: '';
+            background: #ffffff;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            position: absolute;
+              top: calc(50% - 4px);
+              left: -4px;
+          }
+        }
+
+        &__Movie {
+          margin: 16px 0 0 16px;
+          display: flex;
+            flex-direction: row;
+
+          iframe {
+            width: 560px;
+            height: 315px;
+            border: none;
+            margin-right: 8px;
+            display: block;
+          }
+
+          &__Favorite {
+            height: 1.3em;
+            border: solid 1px #333333;
+            border-radius: 4px;
+            padding: 8px;
+            display: flex;
+              flex-direction: row;
+
+            .fa-bookmark {
+              font-size: 1.5rem;
+              margin-right: 8px;
+            }
+
+            p { font-size: 0.7rem; }
+            &--Text_Decoration {
+              font-size: 1.0rem;
+              font-weight: bold;
+            }
+
+            &:hover {
+              background-color: #333333;
+              color: #ffffff;
+            }
+          }
+        }
+      }
+
+      .Movie_Show {
+        width: 784px;
+
+        h2 {
+          background-color: rgba($Default_Font-Color, 0.1);
+          font-size: 1.1rem;
+          border-radius: 8px;
+          box-shadow: 2px 2px 4px rgba($Default_Font-Color, 0.2);
+          padding: 4px;
+          margin-bottom: 16px;
+        }
+
+        &__Tag {
+          background: rgba(#ff6600, 0.4);
+          font-size: 0.8rem;
+          padding: 1px 8px 1px 12px;
+          margin: 0 0 2px 32px;
+          display: inline-block;
+          position: relative;
+
+          &:before {
+            content: '';
+            border-style: solid;
+            border-color: transparent rgba(#ff6600, 0.4) transparent transparent;
+            border-width: 11px 16px 10px 0;
+            position: absolute;
+              top: 0;
+              left: -16px;
+          }
+
+          &:after {
+            content: '';
+            background: #ffffff;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            position: absolute;
+              top: calc(50% - 4px);
+              left: -4px;
+          }
+        }
+
+        &__Movie {
+          margin: 16px 0 0 16px;
+          display: flex;
+            flex-direction: row;
+
+          iframe {
+            width: 560px;
+            height: 315px;
+            border: none;
+            margin-right: 8px;
+            display: block;
+          }
+
+          &__Favorite {
+            height: 1.3em;
+            border: solid 1px #333333;
+            border-radius: 4px;
+            padding: 8px;
+            display: flex;
+              flex-direction: row;
+
+            .fa-bookmark {
+              font-size: 1.5rem;
+              margin-right: 8px;
+            }
+
+            p { font-size: 0.7rem; }
+            &--Text_Decoration {
+              font-size: 1.0rem;
+              font-weight: bold;
+            }
+
+            &:hover {
+              background-color: #333333;
+              color: #ffffff;
+            }
+          }
+        }
+      }
+    }
+
+    @import 'devise';
+  }
+
+  footer {
+    display: none;
+
+    @media (max-width: 519px) {
+      width: 100vw;
+        min-width: 320px;
+      height: 48px;
+      box-shadow: 0 -2px 4px 0px #eeeeee;
+      display: block;
+      position: absolute;
+        bottom: 0;
+
+      .Footer_Btn {
+        width: 24%;
+        font-size: 0.8rem;
+        line-height: 1.3em;
+        text-align: center;
+        padding-top: 8px;
+        // margin: 0 auto;
+        display: inline-block;
+        i { font-size: 1.2rem; }
+      }
+    }
+  }
+}
