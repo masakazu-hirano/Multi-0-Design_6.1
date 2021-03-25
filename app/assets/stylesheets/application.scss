@@ -53,16 +53,17 @@ body {
       nav {
         position: absolute;
           top: 50%;
-          right: 0;
+          right: 16px;
           transform: translateY(-50%);
 
         a {
-          width: 3.0em;
-          font-size: 0.8rem;
+          width: 4.0em;
+          font-size: 0.7rem;
           text-align: center;
           border: solid 1px $Default_Font-Color;
           border-radius: 8px;
           padding: 4px 8px;
+          margin-left: 8px;
           display: inline-block;
 
           i { font-size: 1.2rem; }
