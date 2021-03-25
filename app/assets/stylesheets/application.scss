@@ -3,10 +3,19 @@
 @import 'font-awesome';
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Noto+Serif+JP&family=Parisienne&display=swap');
   /* Google Fonts から "Noto Sans JP"，"Noto Serif JP"，"Parisienne" をインポートする。 */
+
 $Default_Font-Color: #333333;
+
+@mixin Up_D-Center {
+  position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
 body {
   width: 100vw;
+    min-width: 320px;
+    max-width: 1024px;
   color: $Default_Font-Color;
   font-family: 'Noto Sans JP', sans-serif;
   font-size: 16px;
@@ -17,6 +26,58 @@ body {
   }
 
   @import 'header';
+
+  header {
+    width: 100vw;
+    height: 56px;
+    box-shadow: 0 2px 4px 0px #eeeeee;
+    position: relative;
+
+    section {
+      max-width: 1024px;
+      height: 56px;
+      margin: 0 auto;
+      position: relative;
+
+      h1 {
+        width: 7.0em;
+        font-family: 'Parisienne', cursive;
+        font-size: 2.0rem;
+        font-weight: bold;
+        padding-left: 16px;
+        position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+      }
+
+      nav {
+        position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translateY(-50%);
+
+        a {
+          width: 3.0em;
+          font-size: 0.8rem;
+          text-align: center;
+          border: solid 1px $Default_Font-Color;
+          border-radius: 8px;
+          padding: 4px 8px;
+          display: inline-block;
+
+          i { font-size: 1.2rem; }
+          &:hover {
+            background-color: $Default_Font-Color;
+            color: #ffffff;
+          }
+        }
+
+        @media (max-width: 519px) {
+          display: none;
+        }
+      }
+    }
+  }
 
   .Main_Contents {
     max-width: 1024px;
@@ -301,21 +362,20 @@ body {
 
     @media (max-width: 519px) {
       width: 100vw;
-        min-width: 320px;
       height: 48px;
       box-shadow: 0 -2px 4px 0px #eeeeee;
-      display: block;
+      display: inline-block;
       position: absolute;
         bottom: 0;
 
-      .Footer_Btn {
+      a {
         width: 24%;
         font-size: 0.8rem;
         line-height: 1.3em;
         text-align: center;
         padding-top: 8px;
-        // margin: 0 auto;
         display: inline-block;
+
         i { font-size: 1.2rem; }
       }
     }
