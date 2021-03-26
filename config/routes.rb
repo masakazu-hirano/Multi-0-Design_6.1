@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   namespace :user do
     resources :accounts
-    resources :sessions
+    resource :sessions
   end
 
 
