@@ -359,8 +359,80 @@ body {
     @import 'devise';
   }
 
+  .Sign-In {
+    width: 52%;
+    height: calc(100vh - (56px + 16px));
+    margin: 0 auto;
+    position: relative;
+
+    .Sign-In_Form {
+      position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+      &--Flash {
+        background-color: lighten(#ff0000, 40%);
+        color: #ff0000;
+        width: 325px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        padding-left: 8px;
+        margin-left: 197px;
+      }
+
+      &--Require {
+        background-color: #ff0000;
+        color: #ffffff;
+        font-size: 0.8rem;
+        border-radius: 4px;
+        padding: 0 2px;
+      }
+
+      @mixin Sign-In_Form {
+        margin-bottom: 16px;
+
+        &--Input {
+          width: 320px;
+          height: 1.5em;
+          padding: 0 4px;
+        }
+
+        &--Supplement {
+          color: lighten($Default_Font-Color, 20%);
+          font-size: 0.8rem;
+          margin-left: 15.5em;
+          display: block;
+        }
+      }
+
+      &__Mail {
+        @include Sign-In_Form;
+        &--Magine { margin-right: 32px; }
+      }
+
+      &__Password {
+        @include Sign-In_Form;
+        &--Magine { margin-right: 64px; }
+      }
+
+      &__Submit {
+        background-color: #ffffff;
+        width: 332px;
+        color: #007bff;
+        border: solid 1px #007bff;
+        border-radius: 4px;
+        margin: 16px 0 0 12.3em;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #007bff;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
   .Sign-Up {
-    // background-color: lightgray;
     width: 52%;
     height: calc(100vh - (56px + 16px));
     margin: 0 auto;
