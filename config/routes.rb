@@ -1,7 +1,20 @@
 Rails.application.routes.draw do
   root to: 'roots#index'
 
-  resources :users, only: [:new, :create]
+  resources :users
+    namespace :sessions do
+    end
+
+  namespace :user do
+    resources :accounts
+    resources :sessions
+  end
+
+
+
+
+
+
 
 
 
