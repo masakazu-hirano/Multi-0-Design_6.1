@@ -1,0 +1,35 @@
+<section class='Sign-Up'>
+  <%= form_with url: user_accounts_path, class: 'Sign-Up_Form', local: true do |form| %>
+    <p class='Sign-Up_Form__Mail'>
+      <p class='Sign-Up_Form--Flash'><%= flash[:email_blank] %></p>
+      <p class='Sign-Up_Form--Flash'><%= flash[:email_justice] %></p>
+      <p class='Sign-Up_Form--Flash'><%= flash[:email_duplicate] %></p>
+
+      <span class='Sign-Up_Form--Require'>必須</span>
+      <%= form.label :email, 'メールアドレス', class: 'Sign-Up_Form__Mail--Magine' %>：
+      <%= form.text_field :email, class: 'Sign-Up_Form__Mail--Input' %><br />
+      <span class='Sign-Up_Form__Mail--Supplement'>※ メールアドレスを入力してください。</span>
+    </p>
+
+    <p class='Sign-Up_Form__Password'>
+      <p class='Sign-Up_Form--Flash'><%= flash[:password_blank] %></p>
+      <p class='Sign-Up_Form--Flash'><%= flash[:password_count] %></p>
+
+      <span class='Sign-Up_Form--Require'>必須</span>
+      <%= form.label :password, 'パスワード', class: 'Sign-Up_Form__Password--Magine' %>：
+      <%= form.password_field :password, class: 'Sign-Up_Form__Password--Input' %><br />
+      <span class='Sign-Up_Form__Password--Supplement'>※ パスワードを 8文字以上で入力してください。</span>
+    </p>
+
+    <p class='Sign-Up_Form__Password-Confirm'>
+      <p class='Sign-Up_Form--Flash'><%= flash[:mismatch] %></p>
+
+      <span class='Sign-Up_Form--Require'>必須</span>
+      <%= form.label :password_confirmation, 'パスワード' %><span class='Sign-Up_Form__Password-Confirm--Text-Small'>（確認用）</span>：
+      <%= form.password_field :password_confirmation, class: 'Sign-Up_Form__Password-Confirm--Input' %><br />
+      <span class='Sign-Up_Form__Password-Confirm--Supplement'>※ もう一度 パスワードを入力してください。</span>
+    </p>
+
+    <%= form.submit :新規登録, class: 'Sign-Up_Form__Submit' %>
+  <% end %>
+</section>
