@@ -3,21 +3,21 @@ class User < ApplicationRecord
   validates :password, presence: true, confirmation: true
 
   def regist_check
-    @error = Array.new
+    error = Array.new
 
       if self.email == ''
-        @error << 'メールアドレスが未入力です。'
+        error << 'メールアドレスが未入力です。'
       elsif self.email.include?('@') == false
-        @error << 'メールアドレスを正しく入力してください。'
+        error << 'メールアドレスを正しく入力してください。'
       end
 
       if self.password == ''
-        @error << 'パスワードが未入力です'
+        error << 'パスワードが未入力です'
       elsif self.password.length < 8
-        @error << 'パスワードを 8文字以上で入力してください。'
+        error << 'パスワードを 8文字以上で入力してください。'
       end
 
-    return @error
+    return error
   end
 
   def encrypt_password
