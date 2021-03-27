@@ -19,4 +19,8 @@ class User < ApplicationRecord
 
     return @error
   end
+
+  def encrypt_password
+    return "HEX(AES_ENCRYPT('#{self.password}', '#{ENV['SECRET_KEY_PASSWORD']}'))"
+  end
 end
