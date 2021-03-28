@@ -22,19 +22,31 @@
 
           <% if session[:user_id].nil? %>
             <%= link_to new_user_sessions_path do %>
-              <i class="fas fa-sign-in-alt"></i><br />ログイン
+              <i class="fas fa-sign-in-alt"></i><br /> ログイン
             <% end %>
 
             <%= link_to new_user_account_path do %>
-              <i class="fas fa-user-plus"></i><br />新規登録
+              <i class="fas fa-user-plus"></i><br /> 新規登録
             <% end %>
           <% else %>
+            <%= link_to "/user/accounts/#{@user.id}/edit" do %>
+              <i class="fas fa-user-circle"></i><br /> マイページ
+            <% end %>
+
             <%= link_to user_sessions_path, method: :delete do %>
-              <i class="fas fa-sign-out-alt"></i><br />ログアウト
+              <i class="fas fa-sign-out-alt"></i><br /> ログアウト
             <% end %>
           <% end %>
         </nav>
       </section>
+
+      <p>
+        <% if session[:user_id].nil? %>
+          ● ログインしていません。
+        <% else %>
+          ● ログイン中のユーザー：<%= @user.email %>
+        <% end %>
+      </p>
     </header>
 
     <%= yield %>
