@@ -1,20 +1,25 @@
 <section class='Sign-In'>
   <%= form_with url: user_sessions_path, method: :post, class: 'Sign-In_Form', local: true do |form| %>
-    <p class='Sign-In_Form__Mail'>
-      <p class='Sign-In_Form--Flash'><%= flash[:email_blank] %></p>
+    <% if defined? error %>
+      <div class='Sign-In_Form__Error'>
+        <h2>※ ログインに失敗しました ※</h2>
+        <% error.each do |e| %>
+          <span class='Sign-In_Form__Error--Text-Small'>●</span> <%= e %> <br />
+        <% end %>
+      </div>
+    <% end %>
 
+    <p class='Sign-In_Form__Mail'>
       <span class='Sign-In_Form--Require'>必須</span>
       <%= form.label :email, 'メールアドレス', class: 'Sign-In_Form__Mail--Magine' %>：
-      <%= form.text_field :email, class: 'Sign-In_Form__Mail--Input' %><br />
+      <%= form.email_field :email, required: :true, class: 'Sign-In_Form__Mail--Input' %><br />
       <span class='Sign-In_Form__Mail--Supplement'>※ メールアドレスを入力してください。</span>
     </p>
 
     <p class='Sign-In_Form__Password'>
-      <p class='Sign-In_Form--Flash'><%= flash[:password_blank] %></p>
-
       <span class='Sign-In_Form--Require'>必須</span>
       <%= form.label :password, 'パスワード', class: 'Sign-In_Form__Password--Magine' %>：
-      <%= form.password_field :password, class: 'Sign-In_Form__Password--Input' %><br />
+      <%= form.password_field :password, required: :true, class: 'Sign-In_Form__Password--Input' %><br />
       <span class='Sign-In_Form__Password--Supplement'>※ パスワードを入力してください。</span>
     </p>
 

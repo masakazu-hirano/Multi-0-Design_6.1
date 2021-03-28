@@ -1,10 +1,10 @@
 <section class='Sign-Up'>
-  <%= form_with url: user_accounts_path, class: 'Sign-Up_Form', local: true do |form| %>
+  <%= form_with url: user_accounts_path, method: :post, class: 'Sign-Up_Form', local: true do |form| %>
     <% if defined? error %>
       <div class='Sign-Up_Form__Error'>
         <h2>※ ユーザー情報の登録に失敗しました ※</h2>
         <% error.each do |e| %>
-          <span class='Sign-Up_Form__Error--Text-Small'>●</span> <%= e %>
+          <span class='Sign-Up_Form__Error--Text-Small'>●</span> <%= e %> <br />
         <% end %>
       </div>
     <% end %>
@@ -12,21 +12,21 @@
     <p class='Sign-Up_Form__Mail'>
       <span class='Sign-Up_Form--Require'>必須</span>
       <%= form.label :email, 'メールアドレス', class: 'Sign-Up_Form__Mail--Magine' %>：
-      <%= form.email_field :email, class: 'Sign-Up_Form__Mail--Input' %><br />
+      <%= form.email_field :email, required: :true, class: 'Sign-Up_Form__Mail--Input' %><br />
       <span class='Sign-Up_Form__Mail--Supplement'>※ メールアドレスを入力してください。</span>
     </p>
 
     <p class='Sign-Up_Form__Password'>
       <span class='Sign-Up_Form--Require'>必須</span>
       <%= form.label :password, 'パスワード', class: 'Sign-Up_Form__Password--Magine' %>：
-      <%= form.password_field :password, class: 'Sign-Up_Form__Password--Input' %><br />
+      <%= form.password_field :password, required: :true, class: 'Sign-Up_Form__Password--Input' %><br />
       <span class='Sign-Up_Form__Password--Supplement'>※ パスワードを 8文字以上で入力してください。</span>
     </p>
 
     <p class='Sign-Up_Form__Password-Confirm'>
       <span class='Sign-Up_Form--Require'>必須</span>
       <%= form.label :password_confirmation, 'パスワード' %><span class='Sign-Up_Form__Password-Confirm--Text-Small'>（確認用）</span>：
-      <%= form.password_field :password_confirmation, class: 'Sign-Up_Form__Password-Confirm--Input' %><br />
+      <%= form.password_field :password_confirmation, required: :true, class: 'Sign-Up_Form__Password-Confirm--Input' %><br />
       <span class='Sign-Up_Form__Password-Confirm--Supplement'>※ もう一度 パスワードを入力してください。</span>
     </p>
 
