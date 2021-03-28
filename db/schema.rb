@@ -15,6 +15,8 @@ ActiveRecord::Schema.define(version: 2021_01_13_103150) do
   create_table "users", id: { type: :integer, unsigned: true }, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", limit: 255, null: false
     t.string "password", limit: 255, null: false
+    t.datetime "last_login", null: false
+    t.string "ip_address", limit: 255, null: false
     t.datetime "created_at", null: false
     t.index ["email"], name: "email", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
