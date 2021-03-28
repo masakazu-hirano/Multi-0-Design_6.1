@@ -10,22 +10,26 @@ class User::SessionsController < ApplicationController
   end
 
   def create
-    decrypt_password = "AES_DECRYPT(UNHEX(password), '#{ENV['SECRET_KEY_PASSWORD']}')"
-    encode_password = "CONVERT(#{decrypt_password} USING utf8mb4)"
-    user = User.find_by_sql("SELECT id, email, #{encode_password} AS password FROM users WHERE email = '#{user_params['email'].downcase}';")
+    user = User.new(email: user_params['email'].downcase, password: user_params['password'])
+    error = user.login_check
 
-    if user == []
-      flash[:email_blank] = '※ メールアドレスが異なります ※'
-      render action: :new
-    else
-      if user[0]['password'] == user_params['password']
-        session[:user_id] = user[0]['id']
+    if error == []
+      user_db = User.find_by_sql("SELECT id, email, CONVERT(AES_DECRYPT(UNHEX(password), '#{ENV['SECRET_KEY_PASSWORD']}') USING utf8mb4) AS password FROM users WHERE email = '#{user.email}';")[0]
+
+      if user_db == nil || user.password != user_db.password
+        error << 'メールアドレス または パスワードが間違っています。'
+        render action: :new, locals: { error: error }
+      elsif user.password == user_db.password
+        session[:user_id] = user_db.id
         redirect_to root_path, notice: "You have successfully logged in."
-      else
-        flash[:password_blank] = '※ パスワードが異なります ※'
-        render action: :new
       end
+    else
+      render action: :new, locals: { error: error }
     end
+  end
+
+  def show
+    redirect_to new_user_sessions_path
   end
 
   def destroy

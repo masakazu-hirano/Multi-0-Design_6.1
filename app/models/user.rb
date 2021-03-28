@@ -20,6 +20,22 @@ class User < ApplicationRecord
     return error
   end
 
+  def login_check
+    error = Array.new
+
+    if self.email == ''
+      error << 'メールアドレスが未入力です。'
+    elsif self.email.include?('@') == false
+      error << 'メールアドレスを正しく入力してください。'
+    end
+
+    if self.password == ''
+      error << 'パスワードが未入力です。'
+    end
+
+    return error
+  end
+
   def encrypt_password
     return "HEX(AES_ENCRYPT('#{self.password}', '#{ENV['SECRET_KEY_PASSWORD']}'))"
   end
