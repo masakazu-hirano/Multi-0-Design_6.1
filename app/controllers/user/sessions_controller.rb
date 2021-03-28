@@ -1,8 +1,7 @@
 class User::SessionsController < ApplicationController
   def new
-    if session[:authenticity_token] == nil
-    else
-      @user = User.find_by email: session[:authenticity_token]['email'].downcase
+    if session[:authenticity_token] != nil && session[:authenticity_token]['authenticity_token'].length == 86
+      @user = User.find_by email: session[:authenticity_token]['email']
       session[:user_id] = @user.id
       session.delete(:authenticity_token)
       redirect_to root_path, notice: "You have successfully logged in."
@@ -21,6 +20,13 @@ class User::SessionsController < ApplicationController
         render action: :new, locals: { error: error }
       elsif user.password == user_db.password
         session[:user_id] = user_db.id
+
+        client = mysql_connect
+        today = "#{Time.zone.now.strftime('%Y-%m-%d %H:%m:%S')}"
+        ip_address = "#{request.env["HTTP_X_FORWARDED_FOR"] || request.remote_ip}"
+        sql = %{UPDATE users SET last_login = '#{today}', ip_address = '#{ip_address}' WHERE id = #{user_db.id};}
+        client.query(sql)
+
         redirect_to root_path, notice: "You have successfully logged in."
       end
     else
