@@ -23,7 +23,6 @@ class User::AccountsController < ApplicationController
         ip_address = "#{request.env["HTTP_X_FORWARDED_FOR"] || request.remote_ip}"
         sql = %{INSERT INTO users (#{select_columns}) VALUES ('#{user.email}', #{user.encrypt_password}, '#{today}', '#{ip_address}', '#{today}');}
 
-        binding.pry
         client.query(sql)
         session[:authenticity_token] = {authenticity_token: user_params['authenticity_token'], email: user.email}
         redirect_to new_user_sessions_path
