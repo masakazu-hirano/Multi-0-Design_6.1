@@ -7,10 +7,10 @@ class User::AccountsController < ApplicationController
   end
 
   def create
-    user = User.new(email: user_params['email'], password: user_params['password'])
+    user = User.new(email: user_params['email'].downcase, password: user_params['password'])
     error = user.regist_check
 
-    if user_params['password'] != user_params['password_confirmation']
+    if user.password != user_params['password_confirmation']
       error << '入力されたパスワードが一致しません。'
     end
 
@@ -18,11 +18,14 @@ class User::AccountsController < ApplicationController
       begin
         client = mysql_connect
 
-        today = "#{Time.now.strftime('%Y-%m-%d %H:%m:%S')}"
-        sql = %{INSERT INTO users (email, password, created_at) VALUES ('#{user_params['email'].downcase}', #{user.encrypt_password}, '#{today}');}
+        select_columns = 'email, password, last_login, ip_address, created_at'
+        today = "#{Time.zone.now.strftime('%Y-%m-%d %H:%m:%S')}"
+        ip_address = "#{request.env["HTTP_X_FORWARDED_FOR"] || request.remote_ip}"
+        sql = %{INSERT INTO users (#{select_columns}) VALUES ('#{user.email}', #{user.encrypt_password}, '#{today}', '#{ip_address}', '#{today}');}
 
+        binding.pry
         client.query(sql)
-        session[:authenticity_token] = {authenticity_token: user_params['authenticity_token'], email: user_params['email']}
+        session[:authenticity_token] = {authenticity_token: user_params['authenticity_token'], email: user.email}
         redirect_to new_user_sessions_path
 
       rescue Mysql2::Error => e
@@ -34,6 +37,9 @@ class User::AccountsController < ApplicationController
     else
       render action: :new, locals: { error: error }
     end
+  end
+
+  def edit
   end
 
   private
