@@ -3,14 +3,7 @@
 @import 'font-awesome';
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Noto+Serif+JP&family=Parisienne&display=swap');
   /* Google Fonts から "Noto Sans JP"，"Noto Serif JP"，"Parisienne" をインポートする。 */
-
 $Default_Font-Color: #333333;
-
-@mixin Up_D-Center {
-  position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
 
 body {
   width: 100vw;
@@ -23,15 +16,13 @@ body {
   a {
     color: $Default_Font-Color;
     text-decoration: none;
+    &:hover { text-decoration: underline; }
   }
-
-  @import 'header';
 
   header {
     width: 100vw;
-    height: 56px;
+    height: 72px;
     box-shadow: 0 2px 4px 0px #eeeeee;
-    // margin-bottom: 16px;
     position: relative;
 
     section {
@@ -73,9 +64,26 @@ body {
             color: #ffffff;
           }
         }
+      }
 
-        @media (max-width: 519px) {
-          display: none;
+      p {
+        font-size: 0.8rem;
+        position: absolute;
+          right: 20px;
+          bottom: -14px;
+      }
+    }
+
+    @media (max-width: 519px) {
+      height: 56px;
+
+      section {
+        nav { display: none }
+        p { display: none }
+        h1 {
+          width: 100vw;
+          text-align: center;
+          padding: 0;
         }
       }
     }
