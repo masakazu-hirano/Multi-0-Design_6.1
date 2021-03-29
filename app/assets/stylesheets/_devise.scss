@@ -1,0 +1,267 @@
+$Default_Font-Color: #333333;
+@mixin Sub-Title {
+  font-family: 'Noto Serif JP', serif;
+  position: relative;
+
+  h2 {
+    .fas { margin-right: 4px; }
+    &::before { margin-right: 8px; }
+    &::after { margin-left: 8px; }
+    display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  &--Down_Text {
+    font-size: 0.7rem;
+    text-align: center;
+    margin: -0.4em 0 0 2.0em;
+  }
+}
+
+.Sub-Title_Login {
+  @include Sub-Title;
+
+  h2 {
+    @mixin Sub-Title_Decoration {
+      content: '';
+      background-color: $Default_Font-Color;
+      width: 30px;
+      height: 1px;
+    }
+
+    &::before { @include Sub-Title_Decoration; }
+    &::after { @include Sub-Title_Decoration; }
+  }
+}
+
+.Login_Form {
+  font-size: 0.8rem;
+  margin: 16px 0 0 10px;
+
+  &--Input {
+    width: 90%;
+    height: 1.5em;
+    border: solid 1px rgba($Default_Font-Color, 0.3);
+    border-radius: 4px;
+    padding-left: 4px;
+    margin-bottom: 8px;
+  }
+
+  &__Password-Memory {
+    font-size: 0.7rem;
+
+    &--Text {
+      position: relative;
+        top: -2px;
+    }
+  }
+
+  &--Password_Reset {
+    color: #0000d0;
+    font-size: 0.7rem;
+    text-align: right;
+    margin: 0 12px 0 0;
+    display: block;
+    &:hover { text-decoration: underline; }
+  }
+
+  &--Submit {
+    width: 90%;
+    background-color: #ffffff;
+    color: #007bff;
+    border: solid 1px #007bff;
+    border-radius: 4px;
+    margin-top: 8px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #007bff;
+      color: #ffffff;
+    }
+  }
+
+  &--Recruit {
+    font-size: 0.7rem;
+    text-align: right;
+    display: block;
+    &:hover { text-decoration: underline; }
+  }
+}
+
+.Regist_Form {
+  width: 620px;
+  font-size: 0.8rem;
+  margin: 12px auto 0;
+
+  &__Flexbox {
+    margin-bottom: 32px;
+    display: flex;
+      flex-direction: row;
+  }
+
+  &--Required {
+    background-color: #ff0000;
+    color: #ffffff;
+    width: 2.0em;
+    height: 1.5em;
+    font-size: 0.7rem;
+    text-align: center;
+    border-radius: 4px;
+    padding: 0 4px;
+    margin: 2px 4px 0 0;
+  }
+
+  @mixin Regist_Form {
+    width: 16.0em;
+    height: 2.0em;
+    border: solid 1px rgba(#333333, 0.3);
+    border-radius: 4px;
+    padding: 0 4px;
+    margin-top: -4px;
+  }
+
+  &--Input { @include Regist_Form; }
+  &--Text {
+    color: rgba($Default_Font-Color, 0.6);
+    font-size: 0.6rem;
+    position: relative;
+      top: 2.25em;
+      left: -22.0em;
+  }
+
+  &__Agreement {
+    font-size: 0.6rem;
+    position: relative;
+      top: 8px;
+
+    &--Text {
+      position: relative;
+        top: -2px;
+    }
+  }
+
+  &--Submit {
+    width: 400px;
+    background-color: #ffffff;
+    color: #007bff;
+    border: solid 1px #007bff;
+    border-radius: 4px;
+    margin-top: 8px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #007bff;
+      color: #ffffff;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Registration_Page {
+  width: 784px;
+  padding: 8px 8px 8px 64px;
+  // margin: 80px auto 0;
+
+  .Regist {
+    width: 100vw;
+    max-width: 1024px;
+    margin: 0 auto;
+
+    &__Input {
+      font-size: 0.8rem;
+      margin-bottom: 48px;
+      display: flex;
+        flex-direction: row;
+
+      &--Required {
+        background-color: #ff0000;
+        color: #ffffff;
+        width: 2.0em;
+        height: 1.5em;
+        font-size: 0.7rem;
+        text-align: center;
+        border-radius: 4px;
+        padding: 0 4px;
+        margin-right: 8px;
+      }
+
+      @mixin Regist_Form {
+        width: 16.0em;
+        height: 1.5em;
+        font-size: 0.8rem;
+        border: solid 1px rgba(#333333, 0.3);
+        border-radius: 4px;
+        padding: 0 4px;
+      }
+
+      &--Name {
+        @include Regist_Form;
+        margin-left: 64px;
+      }
+
+      &--E-Mail {
+        @include Regist_Form;
+        margin-left: 38px;
+      }
+
+      &--Password {
+        @include Regist_Form;
+        margin-left: 64px;
+      }
+
+      &--Password_Confirm {
+        @include Regist_Form;
+      }
+
+      &--Text {
+        color: rgba(#333333, 0.6);
+        font-size: 0.6rem;
+        position: relative;
+          top: 2.25em;
+          left: -22.0em;
+      }
+    }
+
+    &__Agreement {
+      font-size: 0.6rem;
+      margin: 0 0 0 170px;
+
+      &--Text {
+        position: relative;
+          top: -2px;
+      }
+    }
+
+    &__Submit {
+      &--Button {
+        width: 16.8em;
+        background-color: #ffffff;
+        color: #007bff;
+        font-size: 0.8rem;
+        border: solid 1px #007bff;
+        border-radius: 4px;
+        padding: 0 0 2px;
+        margin: 0 0 0 166px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #007bff;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+<section class='Main_Contents'>
+  <section class='Left_Column'>
+    <%= render partial: 'render/left-column' %>
+  </section>
+
+  <section class='Right_Column'>
+    <div class='Popular_Movies'>
+      <% @video_likes.each do |video| %>
+        <div class='YouTube_Movie'>
+          <p class='YouTube_Movie--Title'><%= video.title %></p>
+          <%= image_tag video.thumbnail %>
+          <p class='YouTube_Movie--Follower'>
+            <span class='YouTube_Movie--Follower--Text-Big'><%= video.like_videos.count %></span> 人がブックマークしています。
+          </p>
+          <%= link_to youtube_video_path(video.id), class: 'YouTube_Movie__Link' do %>
+            動画を観る
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </section>
+</section>

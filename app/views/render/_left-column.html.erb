@@ -1,0 +1,86 @@
+<div class='Sub-Title_Menu'>
+  <h2><i class='fas fa-bars'></i> メニュー</h2>
+  <p class='Sub-Title_Menu--Down_Text'>Menu</p>
+</div>
+
+<div class='Side-Menu'>
+  <% if user_signed_in? %>
+    <p class='Welcome'>
+      <% if current_user.name == '採用ご担当者' %>
+        ログインしていただき、ありがとうございます。
+      <% elsif @welcome_time >= 17 %>
+        こんばんは。
+      <% elsif @welcome_time >= 11 %>
+        こんにちは。
+      <% elsif @welcome_time >= 5 %>
+        おはようございます。
+      <% else %>
+        お疲れさまです。
+      <% end %><br />
+
+      <% if current_user.name == '採用ご担当者' %>
+        <span class='Welcome--Name'><%= current_user.name %></span> 様
+      <% else %>
+        <span class='Welcome--Name'><%= current_user.name %></span> さん
+      <% end %>
+    </p>
+  <% end %>
+
+  <% unless current_page?(root_path) %>
+    <%= link_to root_path, class: 'Side-Menu--Link' do %>
+      <i class="fas fa-home"></i> トップページ
+    <% end %>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <%= link_to destroy_user_session_path, method: :delete, class: 'Side-Menu--Link' do %>
+      <i class="fas fa-sign-out-alt"></i> ログアウト
+    <% end %>
+  <% else %>
+    <% unless current_page?(new_user_session_path) %>
+      <%= link_to new_user_session_path, class: 'Side-Menu--Link' do %>
+        <i class="fas fa-sign-in-alt"></i> ログイン
+      <% end %>
+    <% end %>
+    <% unless current_page?(new_user_registration_path) %>
+      <%= link_to new_user_registration_path, class: 'Side-Menu--Link' do %>
+        <i class="fas fa-user-plus"></i> 新規登録
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class='Sub-Title_Search'>
+  <h2><i class='fas fa-search'></i> 検索</h2>
+  <p class='Sub-Title_Search--Down_Text'>Search</p>
+</div>
+
+<div class='Side-YouTube_Search'>
+  <i class='fab fa-youtube'></i> YouTube 動画検索
+
+  <%= form_with url: youtube_videos_path, class: 'Side-YouTube_Search__Form', local: true do |form| %>
+    <%= form.search_field :search, placeholder: 'キーワードを入力', class: 'Side-YouTube_Search__Form--Input-Text' %>
+    <i class='fas fa-search'></i>
+
+    <div class='Side-YouTube_Search__Form__Number'>
+      <%= form.radio_button :count, 1, checked: 'checked' %> 1件，
+      <%= form.radio_button :count, 3 %> 3件，
+      <%= form.radio_button :count, 5 %> 5件
+    </div>
+  <% end %>
+</div>
+
+<div class='Side-Instagram_Search'>
+  <i class='fab fa-instagram'></i> Instagram 画像検索
+
+  <%= form_with url: instagram_images_path, class: 'Side-Instagram_Search__Form', local: true do |form| %>
+    <%= form.search_field :search, placeholder: '商品名を入力', class: 'Side-Instagram_Search__Form--Input-Text' %>
+    <i class='fas fa-search'></i>
+
+    <div class='Side-Instagram_Search__Form__Number'>
+      <%= form.radio_button :count, 3, checked: 'checked' %> 3件，
+      <%= form.radio_button :count, 5 %> 5件，
+      <%= form.radio_button :count, 10 %> 10件
+    </div>
+  <% end %>
+</div>
