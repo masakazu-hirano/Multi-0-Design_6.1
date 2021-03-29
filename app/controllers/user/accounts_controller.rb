@@ -7,7 +7,7 @@ class User::AccountsController < ApplicationController
   end
 
   def create
-    user = User.new(email: user_params['email'].downcase, password: user_params['password'])
+    user = User.new(email: user_params['email'], password: user_params['password'])
     error = user.regist_check
 
     if user.password != user_params['password_confirmation']
@@ -19,9 +19,8 @@ class User::AccountsController < ApplicationController
         client = mysql_connect
 
         select_columns = 'email, password, last_login, ip_address, created_at'
-        today = "#{Time.zone.now.strftime('%Y-%m-%d %H:%m:%S')}"
         ip_address = "#{request.env["HTTP_X_FORWARDED_FOR"] || request.remote_ip}"
-        sql = %{INSERT INTO users (#{select_columns}) VALUES ('#{user.email}', #{user.encrypt_password}, '#{today}', '#{ip_address}', '#{today}');}
+        sql = %{INSERT INTO users (#{select_columns}) VALUES (LOWER('#{user.email}'), #{user.encrypt_password}, NOW(), '#{ip_address}', NOW());}
 
         client.query(sql)
         session[:authenticity_token] = {authenticity_token: user_params['authenticity_token'], email: user.email}
