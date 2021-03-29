@@ -110,9 +110,9 @@ end
 
 - [MySQL に接続する処理をおこなうためのコントローラ（application_controller.rb）](app/controllers/application_controller.rb)
 
-- [ユーザー管理機能をおこなうコントローラ（accounts_controller.rb）](app/controllers/accounts_controller.rb)
+- [ユーザー管理機能をおこなうコントローラ（accounts_controller.rb）](app/controllers/user/accounts_controller.rb)
 
-- [ログイン，ログアウトをおこなうコントローラ（sessions_controller.rb）](app/controllers/sessions_controller.rb)
+- [ログイン，ログアウトをおこなうコントローラ（sessions_controller.rb）](app/controllers/user/sessions_controller.rb)
 
 ---
 
