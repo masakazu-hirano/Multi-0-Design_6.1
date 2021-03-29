@@ -7,7 +7,7 @@ class User::AccountsController < ApplicationController
   end
 
   def create
-    user = User.new(email: user_params['email'], password: user_params['password'])
+    user = User.new(email: user_params['email'].downcase, password: user_params['password'])
     error = user.regist_check
 
     if user.password != user_params['password_confirmation']

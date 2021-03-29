@@ -13,7 +13,7 @@ class User::SessionsController < ApplicationController
     error = user.login_check
 
     if error == []
-      user_db = User.find_by_sql("SELECT id, email, CONVERT(AES_DECRYPT(UNHEX(password), '#{ENV['SECRET_KEY_PASSWORD']}') USING utf8mb4) AS password FROM users WHERE email = '#{user.email}';")[0]
+      user_db = User.find_by_sql("SELECT id, email, CONVERT(AES_DECRYPT(UNHEX(password), '#{ENV['SECRET_KEY_PASSWORD']}') USING utf8mb4) AS password FROM users WHERE email = LOWER('#{user.email}');")[0]
 
       if user_db == nil || user.password != user_db.password
         error << 'メールアドレス または パスワードが間違っています。'
@@ -22,9 +22,8 @@ class User::SessionsController < ApplicationController
         session[:user_id] = user_db.id
 
         client = mysql_connect
-        today = "#{Time.zone.now.strftime('%Y-%m-%d %H:%m:%S')}"
         ip_address = "#{request.env["HTTP_X_FORWARDED_FOR"] || request.remote_ip}"
-        sql = %{UPDATE users SET last_login = '#{today}', ip_address = '#{ip_address}' WHERE id = #{user_db.id};}
+        sql = %{UPDATE users SET last_login = NOW(), ip_address = '#{ip_address}' WHERE id = #{user_db.id};}
         client.query(sql)
 
         redirect_to root_path, notice: "You have successfully logged in."
