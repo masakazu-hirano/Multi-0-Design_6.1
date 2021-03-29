@@ -7,8 +7,6 @@ $Default_Font-Color: #333333;
 
 body {
   width: 100vw;
-    min-width: 320px;
-    max-width: 1024px;
   color: $Default_Font-Color;
   font-family: 'Noto Sans JP', sans-serif;
   font-size: 16px;
@@ -16,7 +14,6 @@ body {
   a {
     color: $Default_Font-Color;
     text-decoration: none;
-    &:hover { text-decoration: underline; }
   }
 
   header {
@@ -67,6 +64,7 @@ body {
       }
 
       p {
+        a { &:hover { text-decoration: underline; } }
         font-size: 0.8rem;
         position: absolute;
           right: 20px;
@@ -367,47 +365,52 @@ body {
     @import 'devise';
   }
 
-  .Sign-In {
-    width: 52%;
+  @mixin User_Manage {
+    width: 100%;
     height: calc(100vh - (56px + 16px));
+    display: flex;
+      align-items: center;
+  }
+
+  @mixin User_Manage_Form {
+    max-width: 1024px;
     margin: 0 auto;
-    position: relative;
+
+    &--Require {
+      background-color: #ff0000;
+      color: #ffffff;
+      font-size: 0.8rem;
+      border-radius: 4px;
+      padding: 0 2px;
+    }
+
+    &__Error {
+      background-color: rgba(#ff0000, 0.2);
+      width: 332px;
+      font-size: 0.8rem;
+      text-align: center;
+      padding: 8px 0;
+      margin: 0 0 16px auto;
+
+      h2 {
+        color: #ff0000;
+        font-weight: bold;
+        margin-bottom: 4px;
+      }
+
+      &--Text-Small {
+        font-size: 0.6rem;
+        position: relative;
+          top: -1px;
+      }
+    }
+  }
+
+  .Sign-In {
+    @include User_Manage;
 
     .Sign-In_Form {
-      position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-
-      &__Error {
-        background-color: rgba(#ff0000, 0.2);
-        width: 332px;
-        font-size: 0.8rem;
-        padding: 8px 0;
-        margin: 0 0 16px auto;
-
-        h2 {
-          color: #ff0000;
-          font-weight: bold;
-          text-align: center;
-          margin-bottom: 4px;
-        }
-
-        &--Text-Small {
-          font-size: 0.6rem;
-          text-align: center;
-          // padding: 0 0 0 8px;
-          position: relative;
-            top: -1px;
-        }
-      }
-
-      &--Require {
-        background-color: #ff0000;
-        color: #ffffff;
-        font-size: 0.8rem;
-        border-radius: 4px;
-        padding: 0 2px;
-      }
+      @include User_Manage_Form;
 
       @mixin Sign-In_Form {
         margin-bottom: 16px;
@@ -454,46 +457,10 @@ body {
   }
 
   .Sign-Up {
-    width: 52%;
-    height: calc(100vh - (56px + 16px));
-    margin: 0 auto;
-    position: relative;
+    @include User_Manage;
 
     .Sign-Up_Form {
-      position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-
-      &__Error {
-        background-color: rgba(#ff0000, 0.2);
-        width: 332px;
-        font-size: 0.8rem;
-        text-align: center;
-        padding: 8px 0;
-        margin: 0 0 16px auto;
-
-        h2 {
-          color: #ff0000;
-          font-weight: bold;
-          text-align: center;
-          margin-bottom: 4px;
-        }
-
-        &--Text-Small {
-          font-size: 0.6rem;
-          text-align: center;
-          position: relative;
-            top: -1px;
-        }
-      }
-
-      &--Require {
-        background-color: #ff0000;
-        color: #ffffff;
-        font-size: 0.8rem;
-        border-radius: 4px;
-        padding: 0 2px;
-      }
+      @include User_Manage_Form;
 
       @mixin Sign-Up_Form {
         margin-bottom: 16px;
